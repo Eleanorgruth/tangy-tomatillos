@@ -8,6 +8,7 @@ class App extends Component {
     this.state = {
       movieData: [],
       selectedMovie: {},
+      bannerMessage: '',
       error: '',
       currentView: '',
       randomMovie: {}
@@ -27,8 +28,19 @@ class App extends Component {
       this.setState({ movieData: data})
     })
     .catch(error => {
-      this.setState({ error: `something went wrong ${error}`})
+      this.setState({ error: `something went wrong ${error}` })
     })
+  }
+
+  filterMovie = (userInput) => {
+    const movieSearchResults = this.state.movieData.filter(movie => {
+      return movie.includes(userInput)
+    })
+    if (!movieSearchResults) {
+      this.setState({ bannerMessage: 'Sorry no results found. Please try again.' })
+    } else {
+      this.setState({ movieData: movieSearchResults })
+    }
   }
 
   render() {
