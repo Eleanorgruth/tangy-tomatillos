@@ -1,0 +1,27 @@
+import React from "react"
+import './MovieContainer.css'
+import MoviePosterCard from "../MoviePosterCard/MoviePosterCard"
+
+const MovieContainer = ({movieData}) => {
+  console.log(movieData)
+  const movieArray = movieData.map(movie => {
+    return (
+      <MoviePosterCard
+        title={movie.title}
+        releaseDate={movie.release_date}
+        posterPath={movie.poster_path}
+        averageRating={movie.average_rating}
+        id={movie.id}
+        backdropPath={movie.backdrop_path}
+      />
+    )
+  })
+  return (
+    <section>
+      <h3>All Movies</h3>
+      {movieArray}
+    </section>
+  )
+}
+
+export default MovieContainer
