@@ -1,6 +1,7 @@
 import './App.css';
 import React, { Component } from 'react'
 import logo from '../images/logo.png'
+import Nav from '../Nav/Nav'
 
 class App extends Component {
   constructor() {
@@ -47,7 +48,7 @@ class App extends Component {
     return(
       <main>
         {/* {this.state.error && <Error error={this.state.error}/>} */}
-        {/* <Nav /> */}
+        <Nav filterMovie={this.filterMovie}/>
         <img src={logo}/>
         {/* <Banner />
         <MovieContainer /> */}
