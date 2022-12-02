@@ -2,8 +2,8 @@ import React from "react"
 import './MovieContainer.css'
 import MoviePosterCard from "../MoviePosterCard/MoviePosterCard"
 
-const MovieContainer = ({movieData}) => {
-  console.log(movieData)
+const MovieContainer = ({ movieData }) => {
+  // console.log(movieData)
   const movieArray = movieData.map(movie => {
     return (
       <MoviePosterCard
@@ -13,6 +13,7 @@ const MovieContainer = ({movieData}) => {
         averageRating={movie.average_rating}
         id={movie.id}
         backdropPath={movie.backdrop_path}
+        key={movie.id}
       />
     )
   })

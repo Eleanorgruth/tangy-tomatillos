@@ -26,8 +26,8 @@ class Nav extends Component {
  
   render() {
     return (
-      <nav>
-        <img width="25px" src={icon} />
+      <nav className='nav-styling'>
+        <img className='' width="25px" height="25px" src={icon} />
         <form>
           <input type='text'
             value={this.state.userInput}

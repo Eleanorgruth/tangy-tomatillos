@@ -1,0 +1,18 @@
+.nav-styling {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 5%;
+  background-color: transparent;
+  /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
+  /* z-index: 100; */
+  gap: 10px;
+  border-bottom: 2px, solid, red;
+}
+
+form {
+  background-color: transparent;
+}
+
