@@ -18,7 +18,7 @@ const MovieContainer = ({ movieData }) => {
   })
   return (
     <section>
-      <h3>All Movies</h3>
+      <h2>All movies</h2>
       <section className='container-styling'>{movieArray}</section>
     </section>
   )
