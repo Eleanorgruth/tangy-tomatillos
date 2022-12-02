@@ -1,9 +1,9 @@
-* {
+/* * {
   background-color: black;
   color: white;
   margin: none;
   padding: none;
-}
+} */
 
 
 body {
@@ -19,3 +19,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
