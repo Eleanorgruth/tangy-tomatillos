@@ -4,14 +4,11 @@ import './Banner.css'
 const Banner = ({ randomMovie }) => {
   const divStyle = {
     backgroundImage: 'url('+ randomMovie.backdrop_path + ')',
-    height: '62vh',
-    backgroundSize: 'cover',
-    margin: '10%'
   }
   return (
-    <section className="banner-container" style={divStyle}>
+    <section className="banner-container" >
       <h2>All the best movies in one place</h2>
-      <div className="banner-subcontainer">
+      <div className="banner-subcontainer" style={divStyle}>
         <h3>{randomMovie.title}</h3>
         <button>View details</button>
       </div>
