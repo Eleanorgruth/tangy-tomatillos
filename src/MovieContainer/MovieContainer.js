@@ -3,7 +3,6 @@ import './MovieContainer.css'
 import MoviePosterCard from "../MoviePosterCard/MoviePosterCard"
 
 const MovieContainer = ({ movieData }) => {
-  // console.log(movieData)
   const movieArray = movieData.map(movie => {
     return (
       <MoviePosterCard
@@ -20,7 +19,7 @@ const MovieContainer = ({ movieData }) => {
   return (
     <section>
       <h3>All Movies</h3>
-      {movieArray}
+      <section className='container-styling'>{movieArray}</section>
     </section>
   )
 }
