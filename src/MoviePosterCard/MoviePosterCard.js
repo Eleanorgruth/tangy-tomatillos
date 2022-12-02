@@ -12,7 +12,7 @@ const MoviePosterCard = ({title, releaseDate, posterPath, averageRating, id, bac
           src={icon}
         />
       </p>
-      <p>Released {releaseDate.slice(0, 4)}</p>
+      <p className='released-styling'>Released {releaseDate.slice(0, 4)}</p>
     </section>
   )
 }
