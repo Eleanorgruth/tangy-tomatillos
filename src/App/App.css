@@ -1,8 +1,15 @@
+html {
+  background-color: black;
+}
+
 .App {
   background-color: black;
   color: white;
   margin: none;
   padding: none;
+  overflow: auto;
+  height: 100%;
+  width: 75%;
 }
 
 .App-logo {

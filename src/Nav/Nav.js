@@ -27,16 +27,16 @@ class Nav extends Component {
   render() {
     return (
       <nav className='nav-styling'>
-        <img className='' width="25px" height="25px" src={icon} />
+        <img className='icon'  src={icon} />
         <form>
-          <input type='text'
+          <input className='search-bar' type='text'
             value={this.state.userInput}
             placeholder='Search for a movie...'
             name='userInput' 
             onChange={event => this.handleChange(event)}
             />
 
-          <button onClick={event => this.submitSearch(event)}>Search</button>
+          <button className='search-button' onClick={event => this.submitSearch(event)}>Search</button>
         </form>
       </nav>
     )
