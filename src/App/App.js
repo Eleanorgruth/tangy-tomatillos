@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react'
 import logo from '../images/logo.png'
 import Nav from '../Nav/Nav'
+import MovieContainer from '../MovieContainer/MovieContainer';
 
 class App extends Component {
   constructor() {
@@ -26,7 +27,8 @@ class App extends Component {
       }
     })
     .then(data => {
-      this.setState({ movieData: data})
+      console.log("DATA", data)
+      this.setState({ movieData: data.movies })
     })
     .catch(error => {
       this.setState({ error: `something went wrong ${error}` })
@@ -50,8 +52,8 @@ class App extends Component {
         {/* {this.state.error && <Error error={this.state.error}/>} */}
         <Nav filterMovie={this.filterMovie}/>
         <img src={logo}/>
-        {/* <Banner />
-        <MovieContainer /> */}
+        {/* <Banner /> */}
+        <MovieContainer movieData={this.state.movieData}/> 
       </main>
     )
   }
