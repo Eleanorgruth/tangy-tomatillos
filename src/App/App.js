@@ -14,7 +14,7 @@ class App extends Component {
       bannerMessage: '',
       error: '',
       currentView: '',
-      randomMovie: ''
+      randomMovie: {}
     }
   }
 
