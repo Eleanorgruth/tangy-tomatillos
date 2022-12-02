@@ -14,7 +14,7 @@ class App extends Component {
       bannerMessage: '',
       error: '',
       currentView: '',
-      randomMovie: {}
+      randomMovie: ''
     }
   }
 
@@ -50,16 +50,17 @@ class App extends Component {
 
   getRandomMovie = () => {
     const index = Math.floor(Math.random() * this.state.movieData.length)
-    this.setState({ randomMovie: [this.state.movieData[Number(index)]] })
+    this.setState({ randomMovie: this.state.movieData[Number(index)] })
   }
 
   render() {
     return (
-      <main>
+      <main className='App'>
         {/* {this.state.error && <Error error={this.state.error}/>} */}
         <Nav filterMovie={this.filterMovie} />
         <img src={logo} />
-        <Banner randomMovie={this.state.randomMovie} />
+        {this.state.randomMovie && <Banner randomMovie={this.state.randomMovie}/>}
+        {/* <Banner randomMovie={this.state.randomMovie} /> */}
         <MovieContainer movieData={this.state.movieData} />
       </main>
     )
