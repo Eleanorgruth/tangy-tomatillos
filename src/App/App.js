@@ -4,13 +4,14 @@ import logo from '../images/logo.png'
 import Nav from '../Nav/Nav'
 import MovieContainer from '../MovieContainer/MovieContainer'
 import Banner from '../Banner/Banner'
+import MovieDetailView from '../MovieDetailView/MovieDetailView'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
       movieData: [],
-      selectedMovie: {},
+      selectedMovie: '',
       bannerMessage: '',
       error: '',
       currentView: '',
@@ -18,23 +19,43 @@ class App extends Component {
     }
   }
 
+  clearSelectedMovie = () => {
+    this.setState({ selectedMovie: '' })
+  }
   componentDidMount = () => {
     fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.text)
-        } else {
-          return response.json()
-        }
-      })
-      .then(data => {
-        // console.log("DATA", data)
-        this.setState({ movieData: data.movies })
-        this.getRandomMovie()
-      })
-      .catch(error => {
-        this.setState({ error: `something went wrong ${error}` })
-      })
+    .then(response => {
+      if (!response.ok) {
+        throw Error(response.text)
+      } else {
+        return response.json()
+      }
+    })
+    .then(data => {
+      this.setState({ movieData: data.movies })
+      this.getRandomMovie()
+    })
+    .catch(error => {
+      this.setState({ error: `something went wrong ${error}` })
+    })
+  }
+  
+  setSelectedMovie = (id) => {
+    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+    .then(response => {
+      if (!response.ok) {
+        throw Error(response.text)
+      } else {
+        return response.json()
+      }
+    })
+    .then(data => {
+      this.setState({ selectedMovie: data.movie })
+      this.getRandomMovie()
+    })
+    .catch(error => {
+      this.setState({ error: `something went wrong ${error}` })
+    })
   }
 
   filterMovie = (userInput) => {
@@ -54,16 +75,24 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <main className='App'>
-        {/* {this.state.error && <Error error={this.state.error}/>} */}
-        <Nav filterMovie={this.filterMovie} />
-        <img className="logo" src={logo} />
-        {this.state.randomMovie && <Banner randomMovie={this.state.randomMovie}/>}
-        {/* <Banner randomMovie={this.state.randomMovie} /> */}
-        <MovieContainer movieData={this.state.movieData} />
-      </main>
-    )
+    if (this.state.selectedMovie) {
+      return (
+        <main className='App'>
+          <Nav filterMovie={this.filterMovie} clearSelectedMovie={this.clearSelectedMovie} />
+          <MovieDetailView selectedMovie={this.state.selectedMovie}/>
+        </main>
+      )
+    } else {
+      return (
+        <main className='App'>
+          {/* {this.state.error && <Error error={this.state.error}/>} */}
+          <Nav filterMovie={this.filterMovie} />
+          <img className="logo" src={logo} />
+          {this.state.randomMovie && <Banner randomMovie={this.state.randomMovie}/>}
+          <MovieContainer setSelectedMovie={this.setSelectedMovie} movieData={this.state.movieData} />
+        </main>
+      )
+    }
   }
 
 }
