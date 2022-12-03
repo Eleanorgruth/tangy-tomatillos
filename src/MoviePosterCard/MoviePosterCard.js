@@ -18,3 +18,4 @@ const MoviePosterCard = ({ title, releaseDate, posterPath, averageRating, id, se
 }
 
 export default MoviePosterCard
+

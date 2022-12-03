@@ -1,5 +1,6 @@
 import React from "react"
 import './MovieDetailView.css'
+import icon from '../images/icon.png'
 
 const MovieDetailView = ({ selectedMovie }) => {
   return (
@@ -12,7 +13,7 @@ const MovieDetailView = ({ selectedMovie }) => {
       <div className="detail-container">
         <div className="detail-left-container">
 
-          <img src={selectedMovie.poster_path} className="detail-poster" />
+          <img src={selectedMovie.poster_path} className="detail-poster"/>
         </div>
 
         <div className="detail-right-container">
@@ -20,18 +21,22 @@ const MovieDetailView = ({ selectedMovie }) => {
           <h3 className="detail-tagline">{selectedMovie.tagline}</h3>
           <p className="overview">{selectedMovie.overview}</p>
           <ul>
-            <li>Rating: {selectedMovie.average_rating.toFixed(1)}/10</li>
+            <li>Rating: {selectedMovie.average_rating.toFixed(1)}/10 {` `}
+            <img className='detail-icon-styling'
+              src={icon}
+              />
+            </li>
             { selectedMovie.budget
-              ? <li>Budget: ${selectedMovie.budget}</li>
+              ? <li>Budget: ${selectedMovie.budget.toString().slice(selectedMovie.budget.length, -6)}M</li>
               : <li>Budget: not available</li>
             }
             { selectedMovie.revenue
-              ? <li>Revenue: ${selectedMovie.revenue}</li>
+              ? <li>Revenue: ${selectedMovie.revenue.toString().slice(selectedMovie.revenue.length, -6)}M</li>
               : <li>Revenue: not available</li>
             }
-            <li>Runtime: {selectedMovie.runtime}</li>
+            <li>Runtime: {selectedMovie.runtime} minutes</li>
             <li>Release Date: {selectedMovie.release_date}</li>
-            <li>Tags: {selectedMovie.genres.toString().split(',').join(', ')}</li>
+            <li>Genres: {selectedMovie.genres.toString().split(',').join(', ')}</li>
           </ul>
         </div>
       </div>

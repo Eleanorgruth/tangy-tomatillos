@@ -3,7 +3,7 @@
   object-fit: cover;
   height: 100%;
   width: 100%;
-  object-position: center;
+  object-position: top;
 }
 
 .detail-container {
@@ -57,4 +57,9 @@ li {
   margin-left: 1.5%;
   font-style: italic;
 
+}
+
+.detail-icon-styling {
+  height: 2.75vh;
+  margin-bottom: -5px;
 }
