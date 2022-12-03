@@ -2,10 +2,11 @@ import React from "react"
 import './MovieContainer.css'
 import MoviePosterCard from "../MoviePosterCard/MoviePosterCard"
 
-const MovieContainer = ({ movieData }) => {
+const MovieContainer = ({ movieData, setSelectedMovie }) => {
   const movieArray = movieData.map(movie => {
     return (
       <MoviePosterCard
+        setSelectedMovie={setSelectedMovie}
         title={movie.title}
         releaseDate={movie.release_date}
         posterPath={movie.poster_path}

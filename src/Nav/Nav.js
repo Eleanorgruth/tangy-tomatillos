@@ -23,11 +23,12 @@ class Nav extends Component {
   clearInputs = () => {
     this.setState({ userInput: ''})
   }
+
  
   render() {
     return (
       <nav className='nav-styling'>
-        <img className='icon'  src={icon} />
+        <img className='icon'  src={icon} onClick={()=> this.props.clearSelectedMovie()} />
         <form>
           <input className='search-bar' type='text'
             value={this.state.userInput}
