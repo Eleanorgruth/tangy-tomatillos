@@ -31,7 +31,7 @@ const MovieDetailView = ({ selectedMovie }) => {
               : <li>Revenue: not available</li>
             }
             <li>Runtime: {selectedMovie.runtime} minutes</li>
-            <li>Release Date: {selectedMovie.release_date}</li>
+            <li>Release Date: {new Date(selectedMovie.release_date).toLocaleString('default', { month: 'long' })} {new Date(selectedMovie.release_date).getDay()}, {new Date(selectedMovie.release_date).getFullYear()}</li>
             <li>Genres: {selectedMovie.genres.toString().split(',').join(', ')}</li>
           </ul>
         </div>
