@@ -5,6 +5,7 @@ import Nav from '../Nav/Nav'
 import MovieContainer from '../MovieContainer/MovieContainer'
 import Banner from '../Banner/Banner'
 import MovieDetailView from '../MovieDetailView/MovieDetailView'
+import Error from '../Error/Error'
 
 class App extends Component {
   constructor() {
@@ -85,9 +86,9 @@ class App extends Component {
     } else {
       return (
         <main className='App'>
-          {/* {this.state.error && <Error error={this.state.error}/>} */}
           <Nav filterMovie={this.filterMovie} />
           <img className="logo" src={logo} />
+          {this.state.error && <Error error={this.state.error}/>}
           {this.state.randomMovie && <Banner setSelectedMovie={this.setSelectedMovie} randomMovie={this.state.randomMovie}/>}
           <MovieContainer setSelectedMovie={this.setSelectedMovie} movieData={this.state.movieData} />
         </main>
