@@ -7,15 +7,11 @@ const MovieDetailView = ({ selectedMovie }) => {
     <div>
       <div className="detail-backdrop-container">
         <img src={selectedMovie.backdrop_path} className='poster-styling' />
-
       </div>
-
       <div className="detail-container">
         <div className="detail-left-container">
-
           <img src={selectedMovie.poster_path} className="detail-poster"/>
         </div>
-
         <div className="detail-right-container">
           <h1 className="detail-title">{selectedMovie.title}</h1>
           <h3 className="detail-tagline">{selectedMovie.tagline}</h3>
@@ -40,7 +36,6 @@ const MovieDetailView = ({ selectedMovie }) => {
           </ul>
         </div>
       </div>
-
     </div>
   )
 }

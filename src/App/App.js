@@ -23,6 +23,7 @@ class App extends Component {
   clearSelectedMovie = () => {
     this.setState({ selectedMovie: '' })
   }
+
   componentDidMount = () => {
     fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
     .then(response => {
@@ -75,17 +76,24 @@ class App extends Component {
     this.setState({ randomMovie: this.state.movieData[Number(index)] })
   }
 
+  handleKeyDown = event => {
+    if (event.key === "Enter") {
+      event.preventDefault()
+      event.target.click()
+    }
+  }
+
   render() {
     if (this.state.selectedMovie) {
       return (
-        <main className='App'>
+        <main className='App' onKeyDown={this.handleKeyDown}>
           <Nav filterMovie={this.filterMovie} clearSelectedMovie={this.clearSelectedMovie} />
           <MovieDetailView selectedMovie={this.state.selectedMovie}/>
         </main>
       )
     } else {
       return (
-        <main className='App'>
+        <main className='App' onKeyDown={this.handleKeyDown}>
           <Nav filterMovie={this.filterMovie} />
           <img className="logo" src={logo} alt="Logo image for Tangy Tomatillos with pink tomatillo icons"/>
           {this.state.error && <Error error={this.state.error}/>}
@@ -95,7 +103,6 @@ class App extends Component {
       )
     }
   }
-
 }
 
 export default App
