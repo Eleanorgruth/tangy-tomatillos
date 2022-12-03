@@ -9,7 +9,6 @@ html {
   padding: none;
   overflow: hidden;
   height: 100%;
-  /* width: 75%; */
   margin-left: 12%;
   margin-right: 12%;
   font-family: 'Roboto', sans-serif;
@@ -22,6 +21,3 @@ html {
   margin-top: 7%;
 }
 
-/* img {
-  margin-top: 10%
-} */

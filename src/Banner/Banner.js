@@ -7,7 +7,7 @@ const Banner = ({ randomMovie }) => {
     // backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0,0.3)), url('+ randomMovie.backdrop_path + ')'
   }
   return (
-    <section className="banner-container" >
+    <section className="banner-container">
       <h2>Trending in movies</h2>
       <div className="banner-subcontainer" style={divStyle}>
         <h3 className="random-movie-title">{randomMovie.title}</h3>
