@@ -25,7 +25,7 @@ const MovieDetailView = ({ selectedMovie }) => {
           <li>Budget: ${selectedMovie.budget}</li>
           <li>Revenue: ${selectedMovie.revenue}</li>
           <li>Runtime: {selectedMovie.runtime}</li>
-          <li>Release Date: {selectedMovie.release_date}</li>
+          <li>Release Date: {new Date(selectedMovie.release_date).toLocaleString('default', { month: 'long' })} {new Date(selectedMovie.release_date).getDay()}, {new Date(selectedMovie.release_date).getFullYear()}</li>
           <li>Tags: {selectedMovie.genres.toString().split(',').join(', ')}</li>
         </ul>
       </div>
