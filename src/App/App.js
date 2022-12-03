@@ -5,6 +5,7 @@ import Nav from '../Nav/Nav'
 import MovieContainer from '../MovieContainer/MovieContainer'
 import Banner from '../Banner/Banner'
 import MovieDetailView from '../MovieDetailView/MovieDetailView'
+import Error from '../Error/Error'
 
 class App extends Component {
   constructor() {
@@ -22,6 +23,7 @@ class App extends Component {
   clearSelectedMovie = () => {
     this.setState({ selectedMovie: '' })
   }
+
   componentDidMount = () => {
     fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
     .then(response => {
@@ -74,27 +76,33 @@ class App extends Component {
     this.setState({ randomMovie: this.state.movieData[Number(index)] })
   }
 
+  handleKeyDown = event => {
+    if (event.key === "Enter") {
+      event.preventDefault()
+      event.target.click()
+    }
+  }
+
   render() {
     if (this.state.selectedMovie) {
       return (
-        <main className='App'>
+        <main className='App' onKeyDown={this.handleKeyDown}>
           <Nav filterMovie={this.filterMovie} clearSelectedMovie={this.clearSelectedMovie} />
           <MovieDetailView selectedMovie={this.state.selectedMovie}/>
         </main>
       )
     } else {
       return (
-        <main className='App'>
-          {/* {this.state.error && <Error error={this.state.error}/>} */}
+        <main className='App' onKeyDown={this.handleKeyDown}>
           <Nav filterMovie={this.filterMovie} />
-          <img className="logo" src={logo} />
-          {this.state.randomMovie && <Banner randomMovie={this.state.randomMovie}/>}
+          <img className="logo" src={logo} alt="Logo image for Tangy Tomatillos with pink tomatillo icons"/>
+          {this.state.error && <Error error={this.state.error}/>}
+          {this.state.randomMovie && <Banner setSelectedMovie={this.setSelectedMovie} randomMovie={this.state.randomMovie}/>}
           <MovieContainer setSelectedMovie={this.setSelectedMovie} movieData={this.state.movieData} />
         </main>
       )
     }
   }
-
 }
 
 export default App

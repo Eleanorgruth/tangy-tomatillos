@@ -4,7 +4,7 @@ import icon from '../images/icon.png'
 
 const MoviePosterCard = ({ title, releaseDate, posterPath, averageRating, id, setSelectedMovie }) => {
   return (
-    <section className='movie-card-styling' onClick={() => setSelectedMovie(id)}>
+    <section className='movie-card-styling' onClick={() => setSelectedMovie(id)} tabIndex="0">
       <img className='movie-image-styling' src={posterPath} alt={title}/>
       <p>Rating {averageRating.toFixed(1)}/10
         <img
@@ -18,3 +18,4 @@ const MoviePosterCard = ({ title, releaseDate, posterPath, averageRating, id, se
 }
 
 export default MoviePosterCard
+
