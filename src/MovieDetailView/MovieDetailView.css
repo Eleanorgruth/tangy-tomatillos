@@ -1,3 +1,63 @@
 .poster-styling {
+  border-radius: 10px;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  object-position: top;
+
+ 
+}
+
+.detail-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10%;
+}
+
+.detail-poster {
+  height: 50vh;
+}
+
+.detail-right-container {
+  font-size: 2.5vh;
+}
+
+ul {
+  list-style: none;
+  margin-left: -25px;
+  padding: none;
+
+}
+
+li {
+  font-weight: bold;
+  padding: 4px;
+ 
+}
+
+.overview {
+  font-size: 2.75vh;
+  /* margin-top: 10%; */
+  margin-left: 15px
+}
+
+.detail-backdrop-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+  margin-bottom: 5%;
   height: 40vh;
+  width: 100%;
+}
+
+.detail-title {
+  margin-left: 1.5%;
+  margin-top: -1%;
+  margin-bottom: -1%;
+}
+
+.detail-tagline {
+  margin-left: 1.5%;
+  font-style: italic;
+
 }

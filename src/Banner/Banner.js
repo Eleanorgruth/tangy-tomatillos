@@ -11,7 +11,7 @@ const Banner = ({ randomMovie }) => {
       <h2>Trending in movies</h2>
       <div className="banner-subcontainer" style={divStyle}>
         <h3 className="random-movie-title">{randomMovie.title}</h3>
-        <button className="random-movie-button" onClick={this.setSelectedMovie(randomMovie.id)}>View details</button>
+        <button className="random-movie-button">View details</button>
       </div>
     </section>
   )

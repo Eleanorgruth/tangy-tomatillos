@@ -88,7 +88,7 @@ class App extends Component {
           {/* {this.state.error && <Error error={this.state.error}/>} */}
           <Nav filterMovie={this.filterMovie} />
           <img className="logo" src={logo} />
-          {this.state.randomMovie && <Banner setSelectedMovie={this.setSelectedMovie} randomMovie={this.state.randomMovie}/>}
+          {this.state.randomMovie && <Banner randomMovie={this.state.randomMovie}/>}
           <MovieContainer setSelectedMovie={this.setSelectedMovie} movieData={this.state.movieData} />
         </main>
       )
