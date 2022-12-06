@@ -6,8 +6,9 @@ import { NavLink } from "react-router-dom"
 const MovieContainer = ({ movieData }) => {
   const movieArray = movieData.map(movie => {
     return (
-      <NavLink to={`/${movie.id}`}>
+      // <NavLink to={`/${movie.id}`} >
         <MoviePosterCard
+        
           // setSelectedMovie={setSelectedMovie}
           title={movie.title}
           releaseDate={movie.release_date}
@@ -17,7 +18,7 @@ const MovieContainer = ({ movieData }) => {
           backdropPath={movie.backdrop_path}
           key={movie.id}
         />
-      </NavLink>
+    
     )
   })
   return (

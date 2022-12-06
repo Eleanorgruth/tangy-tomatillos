@@ -6,7 +6,7 @@ import MovieContainer from '../MovieContainer/MovieContainer'
 import Banner from '../Banner/Banner'
 import MovieDetailView from '../MovieDetailView/MovieDetailView'
 import Error from '../Error/Error'
-import { Route, NavLink, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 class App extends Component {
   constructor() {
@@ -37,7 +37,7 @@ class App extends Component {
       .then(data => {
         console.log("DATA", data)
         this.setState({ movieData: data.movies })
-        //this.getRandomMovie()
+        this.getRandomMovie()
       })
       .catch(error => {
         this.setState({ error: `something went wrong ${error}` })
@@ -93,22 +93,13 @@ class App extends Component {
         {/* <Switch> */}
 
         {/* <Route path='/error' render={()=> <Error error={this.state.error}/>}/> */}
-        <Route
-          exact path='/'
-          render={() =>
-            <div>
-              {/* <Banner setSelectedMovie={this.setSelectedMovie} randomMovie={this.state.randomMovie}/> */}
-              <MovieContainer movieData={this.state.movieData} />
-            </div>
-          } />
-        <Route
-          exact path="/:id"
-          render={({ match }) => {
-            console.log("MATCH", match)
-            console.log("this.state.movieData", this.state.movieData)
-            return <MovieDetailView selectedID={match.params.id} />
-          }}
-        />
+        {/* <Route path='/' render={} */}
+        <Route exact path='/' render={() => <MovieContainer movieData={this.state.movieData} /> } />
+        <Route exact path='/' render={() => <Banner randomMovie={this.state.randomMovie}/>} />
+    
+        
+         
+        <Route exact path="/:id" render={({ match }) => <MovieDetailView selectedID={match.params.id} />}/>
         {/* </Switch> */}
 
         {/* {this.state.error && } */}
