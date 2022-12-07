@@ -2,6 +2,7 @@ import React from "react"
 import './MovieContainer.css'
 import MoviePosterCard from "../MoviePosterCard/MoviePosterCard"
 import Banner from "../Banner/Banner"
+import logo from '../images/logo.png'
 
 const MovieContainer = ({ movieData, randomMovie }) => {
   const movieArray = movieData.map(movie => {
@@ -20,6 +21,7 @@ const MovieContainer = ({ movieData, randomMovie }) => {
   })
   return (
     <section>
+       <img className="logo" src={logo} alt="Logo image for Tangy Tomatillos with pink tomatillo icons" />
       {randomMovie && <Banner randomMovie={randomMovie}/>}
       <h2>All movies</h2>
       <section className='container-styling'>{movieArray}</section>

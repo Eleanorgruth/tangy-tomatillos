@@ -23,7 +23,6 @@ class MovieDetailView extends Component {
       })
       .then(data => {
         this.setState({ selectedMovie: data.movie })
-        console.log("DATA", data.movie)
       })
       .catch(error => {
         this.setState({ error: `something went wrong ${error}` })

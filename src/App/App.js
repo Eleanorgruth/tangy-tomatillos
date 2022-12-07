@@ -1,6 +1,5 @@
 import './App.css'
 import React, { Component } from 'react'
-import logo from '../images/logo.png'
 import Nav from '../Nav/Nav'
 import MovieContainer from '../MovieContainer/MovieContainer'
 import Banner from '../Banner/Banner'
@@ -65,7 +64,7 @@ class App extends Component {
     return (
       <main className='App' onKeyDown={this.handleKeyDown}>
         <Nav filterMovie={this.filterMovie} />
-        <img className="logo" src={logo} alt="Logo image for Tangy Tomatillos with pink tomatillo icons" />
+       
         {/* <Switch> */}
 
         {/* <Route path='/error' render={()=> <Error error={this.state.error}/>}/> */}
