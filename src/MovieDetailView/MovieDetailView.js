@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import './MovieDetailView.css'
 import icon from '../images/icon.png'
 //import { render } from "@testing-library/react"
-//{backdrop_path, poster_path, average_rating, title, tagline, overview, average_rating, budget, revenue, runtime, release_date, genres }
+
 class MovieDetailView extends Component {
   constructor(props) {
     super(props)
@@ -28,6 +28,7 @@ class MovieDetailView extends Component {
         this.setState({ error: `something went wrong ${error}` })
       })
     }
+    
   render() {
     return (
       <div>
