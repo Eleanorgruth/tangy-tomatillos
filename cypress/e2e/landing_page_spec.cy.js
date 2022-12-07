@@ -2,7 +2,7 @@ describe('Landing page experience', () => {
   beforeEach(() => {
     cy.intercept('https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
       method: 'GET',
-      fixture: '../fixtures/data.json'
+      fixture: '../fixtures/movie-data.json'
     })
     cy.visit('http://localhost:3000')
   })
