@@ -28,7 +28,7 @@ class MovieDetailView extends Component {
         this.setState({ error: `something went wrong ${error}` })
       })
     }
-    
+
   render() {
     return (
       <div>
@@ -44,8 +44,7 @@ class MovieDetailView extends Component {
           <h3 className="detail-tagline">{this.state.selectedMovie.tagline}</h3>
           <p className="overview">{this.state.selectedMovie.overview}</p>
           <ul>
-            {/* <li>Rating: {this.state.selectedMovie.average_rating.toFixed(1)}/10 {` `} */}
-            <li>Rating: {this.state.selectedMovie.average_rating}/10 {` `}
+            <li>Rating: {Number(this.state.selectedMovie.average_rating).toFixed(1)}/10 {` `}
             <img className='detail-icon-styling'
               src={icon}
               />
@@ -60,8 +59,7 @@ class MovieDetailView extends Component {
             }
             <li>Runtime: {this.state.selectedMovie.runtime} minutes</li>
             <li>Release Date: {new Date(this.state.selectedMovie.release_date).toLocaleString('default', { month: 'long' })} {new Date(this.state.selectedMovie.release_date).getDay()}, {new Date(this.state.selectedMovie.release_date).getFullYear()}</li>
-            <li>Genres: {this.state.selectedMovie.genres}</li>
-            {/* <li>Genres: {this.state.selectedMovie.genres.toString().split(',').join(', ')}</li> */}
+            <li>Genres: {[this.state.selectedMovie.genres].toString().split(',').join(', ')}</li>
           </ul>
         </div>
       </div>
