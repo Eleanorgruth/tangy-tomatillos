@@ -13,17 +13,12 @@ class App extends Component {
     super()
     this.state = {
       movieData: [],
-      // selectedMovie: '',
       bannerMessage: '',
       error: '',
       currentView: '',
       randomMovie: ''
     }
   }
-
-  // clearSelectedMovie = () => {
-  //   this.setState({ selectedMovie: '' })
-  // }
 
   componentDidMount = () => {
     fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
@@ -43,24 +38,6 @@ class App extends Component {
       })
   }
 
-  // setSelectedMovie = (id) => {
-  //   fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
-  //   .then(response => {
-  //     if (!response.ok) {
-  //       throw Error(response.text)
-  //     } else {
-  //       return response.json()
-  //     }
-  //   })
-  //   .then(data => {
-  //     this.setState({ selectedMovie: data.movie })
-  //     this.getRandomMovie()
-  //   })
-  //   .catch(error => {
-  //     this.setState({ error: `something went wrong ${error}` })
-  //   })
-  // }
-
   filterMovie = (userInput) => {
     const movieSearchResults = this.state.movieData.filter(movie => {
       return movie.includes(userInput)
@@ -75,7 +52,6 @@ class App extends Component {
   getRandomMovie = () => {
     const index = Math.floor(Math.random() * this.state.movieData.length)
     this.setState({ randomMovie: this.state.movieData[Number(index)] })
-    console.log("INDEX", index)
   }
 
   handleKeyDown = event => {
