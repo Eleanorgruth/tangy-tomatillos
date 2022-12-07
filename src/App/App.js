@@ -32,7 +32,7 @@ class App extends Component {
         this.getRandomMovie()
       })
       .catch(error => {
-        this.setState({ error: `something went wrong ${error}` })
+        this.setState({ error: `Sorry something went wrong ${error}. Please try again later.` })
       })
   }
 
@@ -64,8 +64,14 @@ class App extends Component {
       <main className='App' onKeyDown={this.handleKeyDown}>
         <Nav filterMovie={this.filterMovie} />
         {this.state.error && <Error error={this.state.error}/>}
-        <Route exact path='/' render={() => <MovieContainer randomMovie={this.state.randomMovie} movieData={this.state.movieData} /> } />
-        <Route exact path="/:id" render={({ match }) => <MovieDetailView selectedID={match.params.id} />}/>
+        <Route 
+          exact path='/'
+          render={() => <MovieContainer randomMovie={this.state.randomMovie} movieData={this.state.movieData} />}
+        />
+        <Route
+          exact path="/:id"
+          render={({ match }) => <MovieDetailView selectedID={match.params.id} />}
+        />
       </main>
     )
   }
