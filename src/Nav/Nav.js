@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Nav.css'
 import icon from '../images/icon.png'
-//import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Nav extends Component {
   constructor() {
@@ -27,7 +27,9 @@ class Nav extends Component {
   render() {
     return (
       <nav className='nav-styling'>
-        <img className='icon'  src={icon} onClick={()=> this.props.clearSelectedMovie()} tabIndex="0"/>
+        <Link to={`/`}>
+          <img className='icon'  src={icon} tabIndex="0"/>
+        </Link>
         <form>
           <input className='search-bar' type='text'
             value={this.state.userInput}
