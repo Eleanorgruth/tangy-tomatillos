@@ -17,7 +17,7 @@ class App extends Component {
       bannerMessage: '',
       error: '',
       currentView: '',
-      randomMovie: {}
+      randomMovie: ''
     }
   }
 
@@ -35,7 +35,6 @@ class App extends Component {
         }
       })
       .then(data => {
-        console.log("DATA", data)
         this.setState({ movieData: data.movies })
         this.getRandomMovie()
       })
@@ -76,6 +75,7 @@ class App extends Component {
   getRandomMovie = () => {
     const index = Math.floor(Math.random() * this.state.movieData.length)
     this.setState({ randomMovie: this.state.movieData[Number(index)] })
+    console.log("INDEX", index)
   }
 
   handleKeyDown = event => {
@@ -94,8 +94,9 @@ class App extends Component {
 
         {/* <Route path='/error' render={()=> <Error error={this.state.error}/>}/> */}
         {/* <Route path='/' render={} */}
-        <Route exact path='/' render={() => <MovieContainer movieData={this.state.movieData} /> } />
-        <Route exact path='/' render={() => <Banner randomMovie={this.state.randomMovie}/>} />
+        <Route exact path='/' render={() => <MovieContainer randomMovie={this.state.randomMovie} movieData={this.state.movieData} /> } />
+        {/* <Route exact path='/' element={this.state.randomMovie &&
+           <Banner randomMovie={this.state.randomMovie}/>} /> */}
     
         
          
