@@ -2,15 +2,11 @@ import React from "react"
 import './MovieContainer.css'
 import MoviePosterCard from "../MoviePosterCard/MoviePosterCard"
 import Banner from "../Banner/Banner"
-import { NavLink } from "react-router-dom"
 
 const MovieContainer = ({ movieData, randomMovie }) => {
   const movieArray = movieData.map(movie => {
     return (
-      // <NavLink to={`/${movie.id}`} >
         <MoviePosterCard
-        
-          // setSelectedMovie={setSelectedMovie}
           title={movie.title}
           releaseDate={movie.release_date}
           posterPath={movie.poster_path}
