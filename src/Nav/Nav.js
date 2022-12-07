@@ -18,10 +18,18 @@ class Nav extends Component {
   submitSearch = (event) => {
     event.preventDefault()
     this.props.filterMovie(this.state.userInput)
+    this.clearInputs()
   }
 
   clearInputs = () => {
     this.setState({ userInput: ''})
+  }
+
+  handleKeyDown = event => {
+    if (event.key === "Enter") {
+      event.preventDefault()
+      this.submitSearch(event)
+    }
   }
  
   render() {
@@ -36,6 +44,7 @@ class Nav extends Component {
             placeholder='Search for a movie...'
             name='userInput' 
             onChange={event => this.handleChange(event)}
+            onKeyDown={event => this.handleKeyDown(event)}
             />
 
           <button className='search-button' onClick={event => this.submitSearch(event)}>Search</button>

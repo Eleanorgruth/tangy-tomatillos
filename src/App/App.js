@@ -38,7 +38,7 @@ class App extends Component {
 
   filterMovie = (userInput) => {
     const movieSearchResults = this.state.movieData.filter(movie => {
-      return movie.includes(userInput)
+      return movie.title.toLowerCase().includes(userInput.toLowerCase())
     })
     if (!movieSearchResults) {
       this.setState({ bannerMessage: 'Sorry no results found. Please try again.' })
@@ -62,7 +62,7 @@ class App extends Component {
   render() {
     return (
       <main className='App' onKeyDown={this.handleKeyDown}>
-        <Nav filterMovie={this.filterMovie} />
+        <Nav filterMovie={this.filterMovie}/>
         {this.state.error && <Error error={this.state.error}/>}
         <Route 
           exact path='/'
