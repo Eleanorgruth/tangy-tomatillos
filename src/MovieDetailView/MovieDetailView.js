@@ -29,43 +29,56 @@ class MovieDetailView extends Component {
       })
     }
 
-  render() {
-    return (
-      <div>
-      <div className="detail-backdrop-container">
-        <img src={this.state.selectedMovie.backdrop_path} className='poster-styling' />
-      </div>
-      <div className="detail-container">
-        <div className="detail-left-container">
-          <img src={this.state.selectedMovie.poster_path} className="detail-poster"/>
+    render() {
+      const {
+        backdrop_path,
+        poster_path,
+        title,
+        tagline,
+        overview,
+        average_rating,
+        budget,
+        revenue,
+        runtime,
+        release_date,
+        genres
+      } = this.state.selectedMovie
+      return (
+        <div>
+        <div className="detail-backdrop-container">
+          <img src={backdrop_path} className='poster-styling' />
         </div>
-        <div className="detail-right-container">
-          <h1 className="detail-title">{this.state.selectedMovie.title}</h1>
-          <h3 className="detail-tagline">{this.state.selectedMovie.tagline}</h3>
-          <p className="overview">{this.state.selectedMovie.overview}</p>
-          <ul>
-            <li>Rating: {Number(this.state.selectedMovie.average_rating).toFixed(1)}/10 {` `}
-            <img className='detail-icon-styling'
-              src={icon}
-              />
-            </li>
-            { this.state.selectedMovie.budget
-              ? <li>Budget: ${this.state.selectedMovie.budget.toString().slice(this.state.selectedMovie.budget.length, -6)}M</li>
-              : <li>Budget: not available</li>
-            }
-            { this.state.selectedMovie.revenue
-              ? <li>Revenue: ${this.state.selectedMovie.revenue.toString().slice(this.state.selectedMovie.revenue.length, -6)}M</li>
-              : <li>Revenue: not available</li>
-            }
-            <li>Runtime: {this.state.selectedMovie.runtime} minutes</li>
-            <li>Release Date: {new Date(this.state.selectedMovie.release_date).toLocaleString('default', { month: 'long' })} {new Date(this.state.selectedMovie.release_date).getDay()}, {new Date(this.state.selectedMovie.release_date).getFullYear()}</li>
-            <li>Genres: {[this.state.selectedMovie.genres].toString().split(',').join(', ')}</li>
-          </ul>
+        <div className="detail-container">
+          <div className="detail-left-container">
+            <img src={poster_path} className="detail-poster"/>
+          </div>
+          <div className="detail-right-container">
+            <h1 className="detail-title">{title}</h1>
+            <h3 className="detail-tagline">{tagline}</h3>
+            <p className="overview">{overview}</p>
+            <ul>
+              <li>Rating: {Number(average_rating).toFixed(1)}/10 {` `}
+              <img className='detail-icon-styling'
+                src={icon}
+                />
+              </li>
+              { budget
+                ? <li>Budget: ${budget.toString().slice(budget.length, -6)}M</li>
+                : <li>Budget: not available</li>
+              }
+              { revenue
+                ? <li>Revenue: ${revenue.toString().slice(revenue.length, -6)}M</li>
+                : <li>Revenue: not available</li>
+              }
+              <li>Runtime: {runtime} minutes</li>
+              <li>Release Date: {new Date(release_date).toLocaleString('default', { month: 'long' })} {new Date(release_date).getDay()}, {new Date(release_date).getFullYear()}</li>
+              <li>Genres: {[genres].toString().split(',').join(', ')}</li>
+            </ul>
+          </div>
         </div>
-      </div>
-      </div>
-    )
+        </div>
+      )
+    }
   }
-}
-
+  
 export default MovieDetailView
