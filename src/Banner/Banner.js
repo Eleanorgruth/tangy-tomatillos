@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import './Banner.css'
 
 const Banner = ({ randomMovie }) => {
- console.log("PROPS", randomMovie)
   const divStyle = {
     backgroundImage: 'url('+ randomMovie.backdrop_path + ')',
     // backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0,0.3)), url('+ randomMovie.backdrop_path + ')'
