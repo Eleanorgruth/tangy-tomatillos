@@ -26,8 +26,12 @@ form {
 }
 
 .icon:hover {
-  transition-duration: 400ms;
-  transform: scale(1.1);
+  /* transition-duration: 400ms;
+  transform: scale(1.1); */
+    cursor: pointer;
+    transform: scale(1.04);
+    transform: rotate(6deg);
+    transition: all ease-in-out .3s;
 }
 
 .search-bar {
