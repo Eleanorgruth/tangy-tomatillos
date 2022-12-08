@@ -1,0 +1,22 @@
+{
+  "movie": {
+    "id": 400160,
+    "title": "The SpongeBob Movie: Sponge on the Run",
+    "poster_path": "https://image.tmdb.org/t/p/original//gxK2lB1w8an5ViPXzisDsRsyHr0.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/original//bt4xA9WZE9P1wiRILRFt0Zh2wmV.jpg",
+    "release_date": "2020-08-14",
+    "overview": "After SpongeBob's beloved pet snail Gary is snail-napped, he and Patrick embark on an epic adventure to The Lost City of Atlantic City to bring Gary home.",
+    "genres": [
+      "Fantasy",
+      "Animation",
+      "Adventure",
+      "Comedy",
+      "Family"
+    ],
+    "budget": 0,
+    "revenue": 0,
+    "runtime": 91,
+    "tagline": "A Huge Journey to Find a Tiny Friend",
+    "average_rating": 6.25
+  }
+}
