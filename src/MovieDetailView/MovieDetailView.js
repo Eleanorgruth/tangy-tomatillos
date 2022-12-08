@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import './MovieDetailView.css'
 import icon from '../images/icon.png'
 import getFetch from "../apiCalls"
+import Error from "../Error/Error"
 
 class MovieDetailView extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class MovieDetailView extends Component {
     this.state = {
       id: props.selectedID,
       selectedMovie: '',
+      error: ''
     }
   }
 
@@ -18,7 +20,7 @@ class MovieDetailView extends Component {
         this.setState({ selectedMovie: data.movie })
       })
       .catch(error => {
-        this.setState({ error: `something went wrong ${error}` })
+        this.setState({ error: `Sorry something went wrong. Please try again later.` })
       })
     }
 
@@ -36,8 +38,10 @@ class MovieDetailView extends Component {
         release_date,
         genres
       } = this.state.selectedMovie
+      
       return (
         <div>
+        {this.state.error && <Error error={this.state.error}/>}
         <div className="detail-backdrop-container">
           <img src={backdrop_path} className='poster-styling' />
         </div>
