@@ -23,6 +23,7 @@ const MovieContainer = ({ movieData, randomMovie }) => {
     <section>
        <img className="logo" src={logo} alt="Logo image for Tangy Tomatillos with pink tomatillo icons" />
       {randomMovie && <Banner randomMovie={randomMovie}/>}
+      {}
       <h2>All movies</h2>
       <section className='container-styling'>{movieArray}</section>
     </section>

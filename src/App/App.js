@@ -26,7 +26,7 @@ class App extends Component {
         this.getRandomMovie()
       })
       .catch(error => {
-        this.setState({ error: `Sorry something went wrong. Please try again later.` })
+        this.setState({ error: `Sorry! Something went wrong. Please try again later.` })
       })
   }
 
@@ -36,6 +36,7 @@ class App extends Component {
     })
     if (!movieSearchResults) {
       this.setState({ bannerMessage: 'Sorry no results found. Please try again.' })
+      return 
     } else {
       this.setState({ movieData: movieSearchResults })
     }
