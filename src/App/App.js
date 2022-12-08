@@ -66,6 +66,13 @@ class App extends Component {
           exact path="/:id"
           render={({ match }) => <MovieDetailView selectedID={match.params.id} />}
         />
+        <Route
+          exact path="/:search"
+          render={({ match }) => {
+            console.log(match.params.search)
+            return <MovieContainer userInput={match.params.search} randomMovie={this.state.randomMovie} movieData={this.state.movieData} />
+        }}
+        />
       </main>
     )
   }
