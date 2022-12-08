@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import './MovieDetailView.css'
 import icon from '../images/icon.png'
-//import { render } from "@testing-library/react"
+import getFetch from "../apiCalls"
 
 class MovieDetailView extends Component {
   constructor(props) {
@@ -13,14 +13,7 @@ class MovieDetailView extends Component {
   }
 
   componentDidMount = () => {
-    fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${this.state.id}`)
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.text)
-        } else {
-          return response.json()
-        }
-      })
+    getFetch(`movies/${this.state.id}`)
       .then(data => {
         this.setState({ selectedMovie: data.movie })
       })
@@ -80,5 +73,5 @@ class MovieDetailView extends Component {
       )
     }
   }
-  
+
 export default MovieDetailView

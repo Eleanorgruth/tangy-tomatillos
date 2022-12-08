@@ -7,7 +7,6 @@ describe('Tangy Tomatillos landing page', () => {
     })
     cy.visit('http://localhost:3000')
   })
-
   it('should display the title of the site', () => {
     cy.get('.logo')
       .should('have.attr', 'alt', 'Logo image for Tangy Tomatillos with pink tomatillo icons')

@@ -5,6 +5,7 @@ import MovieContainer from '../MovieContainer/MovieContainer'
 import MovieDetailView from '../MovieDetailView/MovieDetailView'
 import Error from '../Error/Error'
 import { Route } from 'react-router-dom'
+import getFetch from '../apiCalls'
 
 class App extends Component {
   constructor() {
@@ -19,14 +20,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.text)
-        } else {
-          return response.json()
-        }
-      })
+    getFetch("movies")
       .then(data => {
         this.setState({ movieData: data.movies })
         this.getRandomMovie()
