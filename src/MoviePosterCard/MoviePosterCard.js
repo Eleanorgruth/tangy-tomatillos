@@ -12,7 +12,7 @@ const MoviePosterCard = ({ title, releaseDate, posterPath, averageRating, id }) 
         <p>Rating {averageRating.toFixed(1)}/10
           <img
             className='icon-styling'
-            src={icon}
+            src={icon} alt="pink tomatillo icon"
           />
         </p>
         <p className='released-styling'>Released {releaseDate.slice(0, 4)}</p>

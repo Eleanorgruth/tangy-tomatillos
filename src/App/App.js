@@ -4,7 +4,8 @@ import Nav from '../Nav/Nav'
 import MovieContainer from '../MovieContainer/MovieContainer'
 import MovieDetailView from '../MovieDetailView/MovieDetailView'
 import Error from '../Error/Error'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+import getFetch from '../apiCalls'
 
 class App extends Component {
   constructor() {
@@ -14,25 +15,18 @@ class App extends Component {
       bannerMessage: '',
       error: '',
       currentView: '',
-      randomMovie: ''
+      randomMovie: {}
     }
   }
 
   componentDidMount = () => {
-    fetch("https://rancid-tomatillos.herokuapp.com/api/v2/movies")
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.text)
-        } else {
-          return response.json()
-        }
-      })
+    getFetch("movies")
       .then(data => {
         this.setState({ movieData: data.movies })
         this.getRandomMovie()
       })
       .catch(error => {
-        this.setState({ error: `Sorry something went wrong ${error}. Please try again later.` })
+        this.setState({ error: `Sorry something went wrong. Please try again later.` })
       })
   }
 
@@ -62,16 +56,26 @@ class App extends Component {
   render() {
     return (
       <main className='App' onKeyDown={this.handleKeyDown}>
-        <Nav filterMovie={this.filterMovie}/>
-        {this.state.error && <Error error={this.state.error}/>}
-        <Route 
-          exact path='/'
-          render={() => <MovieContainer randomMovie={this.state.randomMovie} movieData={this.state.movieData} />}
-        />
-        <Route
-          exact path="/:id"
-          render={({ match }) => <MovieDetailView selectedID={match.params.id} />}
-        />
+        <Nav filterMovie={this.filterMovie} />
+        {this.state.error && <Error error={this.state.error} />}
+        <Switch>
+
+          <Route
+            exact path='/'
+            render={() => <MovieContainer randomMovie={this.state.randomMovie} movieData={this.state.movieData} />}
+          />
+          <Route
+            exact path="/:id"
+            render={({ match }) => <MovieDetailView selectedID={match.params.id} />}
+          />
+          <Route
+            exact path="/:search"
+            render={({ match }) => {
+              console.log(match.params.search)
+              return <MovieContainer userInput={match.params.search} randomMovie={this.state.randomMovie} movieData={this.state.movieData} />
+            }}
+          />
+        </Switch>
       </main>
     )
   }
