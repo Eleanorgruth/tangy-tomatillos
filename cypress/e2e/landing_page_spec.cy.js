@@ -12,6 +12,15 @@ describe('Tangy Tomatillos landing page', () => {
     cy.get('.logo')
       .should('have.attr', 'alt', 'Logo image for Tangy Tomatillos with pink tomatillo icons')
   })
+  it('should display a navigation bar', () => {
+    cy.get('.icon')
+      .should('have.attr', 'alt', 'pink tomatillo icon')
+    cy.get('input[name="userInput"]')
+      .type("Mulan")
+      .should('have.value', "Mulan")
+    cy.get('.search-button')
+      .contains('Search')
+  })
   it('should display a banner of a randomly selected trending movie', () => {
     cy.get('.banner-container')
       .contains('Trending in movies')
@@ -19,7 +28,7 @@ describe('Tangy Tomatillos landing page', () => {
     cy.get('button')
       .contains("View details")
   })
-  it('should view all movies on home page ', () => {
+  it('should display all movies on home page ', () => {
     cy.get('.movie-image-styling')
       .should('have.length', 5)
     cy.get('.container-styling > :nth-child(5)')
@@ -28,9 +37,14 @@ describe('Tangy Tomatillos landing page', () => {
       .should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//sy6DvAu72kjoseZEjocnm2ZZ09i.jpg')
     cy.get('.icon-styling')
       .should('have.attr', 'alt', 'pink tomatillo icon')
-    
-      
-    // cy.contains('Please Sign In')
   })
+  it('should display error message if data is missing', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', { 
+      statusCode: 500,
+      method: 'GET',
+      fixture: './movie-data.json' })
+    cy.visit('http://localhost:3000/')
+      .contains('Sorry something went wrong. Please try again later.')
+  });
 
 })

@@ -36,7 +36,7 @@ class Nav extends Component {
     return (
       <nav className='nav-styling'>
         <Link to={`/`}>
-          <img className='icon'  src={icon} tabIndex="0"/>
+          <img className='icon' alt="pink tomatillo icon" src={icon} tabIndex="0"/>
         </Link>
         <form>
           <input className='search-bar' type='text'
