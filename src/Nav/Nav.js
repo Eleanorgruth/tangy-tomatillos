@@ -4,10 +4,10 @@ import icon from '../images/icon.png'
 import { Link } from 'react-router-dom'
 
 class Nav extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
-      userInput: props.userInput
+      userInput: ''
     }
   }
 
@@ -15,24 +15,24 @@ class Nav extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  submitSearch = (event) => {
-    event.preventDefault()
-    this.props.filterMovie(this.state.userInput)
-    //this.clearInputs()
-  }
-
-  // clearInputs = () => {
-  //   this.setState({ userInput: ''})
+  // submitSearch = (event) => {
+  //   event.preventDefault()
+  //   this.props.filterMovie(this.state.userInput)
+  //   this.clearInputs()
   // }
+
+  clearInputs = () => {
+    this.setState({ userInput: ''})
+  }
 
   handleKeyDown = event => {
     if (event.key === "Enter") {
       event.preventDefault()
-      this.submitSearch(event)
     }
   }
  
   render() {
+    const {userInput} = this.state
     return (
       <nav className='nav-styling'>
         <Link to={`/`}>
@@ -46,8 +46,8 @@ class Nav extends Component {
             onChange={event => this.handleChange(event)}
             onKeyDown={event => this.handleKeyDown(event)}
             />
-          <Link to={`/${this.state.userInput}`}>
-            <button className='search-button' onClick={event => this.submitSearch(event)}>Search</button>
+          <Link to={`/search/${userInput}`}>
+            <button className='search-button'>Search</button>
           </Link>
         </form>
       </nav>
