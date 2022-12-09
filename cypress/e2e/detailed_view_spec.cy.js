@@ -69,7 +69,7 @@ describe('Detailed page experience', () => {
       cy.get('.error-image').should('exist')
   })
 
-  it('should display error message if movie does not exist', () => {
+  it('should display error message if URL does not exist', () => {
     cy.visit('http://localhost:3000/test')
     cy.contains('Sorry! Something went wrong. Please try again later')
     cy.get('.error-image').should('exist')

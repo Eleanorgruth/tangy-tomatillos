@@ -10,7 +10,7 @@ const MoviePosterCard = ({ title, releaseDate, posterPath, averageRating, id }) 
         <Link to={`/${id}`}>
           <img className='movie-image-styling' src={posterPath} alt={title} />
         </Link>
-        <p>Rating {averageRating.toFixed(1)}/10
+        <p>Rating {averageRating.toFixed(0)}/10
           <img
             className='icon-styling'
             src={icon} alt="pink tomatillo icon"
