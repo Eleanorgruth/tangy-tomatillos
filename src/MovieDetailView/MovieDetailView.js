@@ -57,11 +57,11 @@ class MovieDetailView extends Component {
         ? <li>Budget: ${(revenue / 1000).toFixed(0)}K</li>
         : <li>Revenue: not available</li>)
 
-
+    
     return (
       <div>
         <NavDetailedView />
-        {this.state.error && <Error error={this.state.error} />}
+        {this.state.error && <Error error={this.state.error} /> }
         <div className="detail-backdrop-container">
           <img src={backdrop_path} className='poster-styling' />
         </div>

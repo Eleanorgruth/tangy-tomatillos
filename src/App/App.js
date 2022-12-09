@@ -84,7 +84,9 @@ class App extends Component {
               return <MovieContainer userInput={match.params.search} randomMovie={this.state.randomMovie} movieData={this.state.movieData} />
             }}
           />
-          
+          {/* <Route
+            render={() => <Error error={this.state.error} />}
+          /> */}
         </Switch>
       </main>
     )

@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 const Banner = ({ randomMovie }) => {
   const divStyle = {
     backgroundImage: 'url(' + randomMovie.backdrop_path + ')',
-    // backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0,0.3)), url('+ randomMovie.backdrop_path + ')'
   }
   return (
     <section className="banner-container">
@@ -14,7 +13,7 @@ const Banner = ({ randomMovie }) => {
       <div className="banner-subcontainer" style={divStyle}>
         <div className="title-button-container">
           <h3 className="random-movie-title">{randomMovie.title}</h3>
-          <Link to={`/${randomMovie.id}`}>
+          <Link to={`/id/${randomMovie.id}`}>
             <button className="random-movie-button">View details</button>
           </Link>
           </div>

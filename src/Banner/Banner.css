@@ -54,3 +54,10 @@ h2 {
    font-size: 7.5vh;
   }
 }
+
+@media(max-width:800px) {
+
+  .random-movie-title {
+   font-size: 5vh;
+  }
+}
