@@ -15,7 +15,6 @@ class Nav extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-
   clearInputs = () => {
     this.setState({ userInput: ''})
   }

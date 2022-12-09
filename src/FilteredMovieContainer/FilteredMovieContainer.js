@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import MoviePosterCard from "../MoviePosterCard/MoviePosterCard"
 import logo from '../images/logo.png'
+import PropTypes from 'prop-types'
 
 class FilteredMovieContainer extends Component {
   constructor() {
@@ -17,8 +18,7 @@ class FilteredMovieContainer extends Component {
     this.setState({movieSearchResults: movieSearchResults})
   }
   render() {
-    if(this.state.movieSearchResults) {
-      var movieArray = this.state.movieSearchResults.map(movie => {
+    const movieArray = this.state.movieSearchResults.map(movie => {
         return (
           <MoviePosterCard
             title={movie.title}
@@ -31,21 +31,19 @@ class FilteredMovieContainer extends Component {
           />
         )
       })
-    }
-    else {
-      var message = "No Results"
-    }
     return (
       <section>
         <img className="logo" src={logo} alt="Logo image for Tangy Tomatillos with pink tomatillo icons" />
-        <h2>Search Results</h2>
-        <h2>{message}</h2>
-        <section className='container-styling'>{movieArray}</section>
+        {movieArray.length >= 1 ?<h2>Search Results</h2> : <h1>Sorry, no results found. Please adjust your search and try again.</h1> }
+         <section className='container-styling'>{movieArray}</section>
       </section>
     )
   }
 }
 
-
-
 export default FilteredMovieContainer
+
+FilteredMovieContainer.propTypes = {
+  userInput: PropTypes.string.isRequired,
+  movieData: PropTypes.array.isRequired
+}
