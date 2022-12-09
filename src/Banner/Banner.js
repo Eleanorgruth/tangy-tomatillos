@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import './Banner.css'
+import PropTypes from 'prop-types';
 
 const Banner = ({ randomMovie }) => {
   const divStyle = {
@@ -19,6 +20,9 @@ const Banner = ({ randomMovie }) => {
     </section>
   )
 }
-//
+
+Banner.propTypes = {
+  randomMovie: PropTypes.object.isRequired,
+};
 
 export default Banner

@@ -3,6 +3,7 @@ import './MovieContainer.css'
 import MoviePosterCard from "../MoviePosterCard/MoviePosterCard"
 import Banner from "../Banner/Banner"
 import logo from '../images/logo.png'
+import PropTypes from 'prop-types';
 
 const MovieContainer = ({ movieData, randomMovie }) => {
   const movieArray = movieData.map(movie => {
@@ -29,5 +30,10 @@ const MovieContainer = ({ movieData, randomMovie }) => {
     </section>
   )
 }
+
+MovieContainer.propTypes = {
+  randomMovie: PropTypes.object,
+  movieData: PropTypes.array.isRequired,
+};
 
 export default MovieContainer

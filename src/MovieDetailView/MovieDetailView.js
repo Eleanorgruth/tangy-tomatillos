@@ -3,14 +3,15 @@ import './MovieDetailView.css'
 import icon from '../images/icon.png'
 import getFetch from "../apiCalls"
 import Error from "../Error/Error"
+import PropTypes from 'prop-types';
 
 class MovieDetailView extends Component {
   constructor(props) {
     super(props)
     this.state = {
       id: props.selectedID,
-      selectedMovie: '',
-      error: ''
+      selectedMovie: props.selectedID,
+      error: props.error,
     }
   }
 
@@ -20,7 +21,7 @@ class MovieDetailView extends Component {
         this.setState({ selectedMovie: data.movie })
       })
       .catch(error => {
-        this.setState({ error: `Sorry something went wrong. Please try again later.` })
+        this.setState({ error: `Sorry! Something went wrong. Please try again later.` })
       })
     }
 
@@ -75,7 +76,14 @@ class MovieDetailView extends Component {
         </div>
         </div>
       )
+    
     }
   }
+
+  MovieDetailView.propTypes = {
+    id: PropTypes.number,
+    selectedMovie: PropTypes.string,
+    error: PropTypes.string,
+  };
 
 export default MovieDetailView

@@ -1,6 +1,7 @@
 import React from 'react'
 import './Error.css'
 import errorImage from '../images/error-image.png'
+import PropTypes from 'prop-types';
 
 const Error = ({ error }) => {
   return (
@@ -13,5 +14,9 @@ const Error = ({ error }) => {
     </h2>
   )
 }
+
+Error.propTypes = {
+  error: PropTypes.string.isRequired,
+};
 
 export default Error
