@@ -6,6 +6,7 @@ import MovieDetailView from '../MovieDetailView/MovieDetailView'
 import Error from '../Error/Error'
 import { Route, Switch } from 'react-router-dom'
 import getFetch from '../apiCalls'
+import FilteredMovieContainer from '../FilteredMovieContainer/FilteredMovieContainer'
 
 class App extends Component {
   constructor() {
@@ -15,7 +16,7 @@ class App extends Component {
       bannerMessage: '',
       error: '',
       currentView: '',
-      randomMovie: {}
+      randomMovie: {},
     }
   }
 
@@ -30,16 +31,17 @@ class App extends Component {
       })
   }
 
-  filterMovie = (userInput) => {
-    const movieSearchResults = this.state.movieData.filter(movie => {
-      return movie.title.toLowerCase().includes(userInput.toLowerCase())
-    })
-    if (!movieSearchResults) {
-      this.setState({ bannerMessage: 'Sorry no results found. Please try again.' })
-    } else {
-      this.setState({ movieData: movieSearchResults })
-    }
-  }
+
+  // filterMovie = (userInput) => {
+  //   const movieSearchResults = this.state.movieData.filter(movie => {
+  //     return movie.title.toLowerCase().includes(userInput.toLowerCase())
+  //   })
+  //   if (!movieSearchResults) {
+  //     this.setState({ bannerMessage: 'Sorry no results found. Please try again.' })
+  //   } else {
+  //     this.setState({ movieSearchResults: movieSearchResults })
+  //   }
+  // }
 
   getRandomMovie = () => {
     const index = Math.floor(Math.random() * this.state.movieData.length)
@@ -59,7 +61,6 @@ class App extends Component {
         <Nav filterMovie={this.filterMovie} />
         {this.state.error && <Error error={this.state.error} />}
         <Switch>
-
           <Route
             exact path='/'
             render={() => <MovieContainer randomMovie={this.state.randomMovie} movieData={this.state.movieData} />}
@@ -69,10 +70,9 @@ class App extends Component {
             render={({ match }) => <MovieDetailView selectedID={match.params.id} />}
           />
           <Route
-            exact path="/:search"
+            exact path="/search/:search"
             render={({ match }) => {
-              console.log(match.params.search)
-              return <MovieContainer userInput={match.params.search} randomMovie={this.state.randomMovie} movieData={this.state.movieData} />
+              return <FilteredMovieContainer userInput={match.params.search} movieData={this.state.movieData} />
             }}
           />
         </Switch>

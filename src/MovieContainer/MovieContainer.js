@@ -4,7 +4,7 @@ import MoviePosterCard from "../MoviePosterCard/MoviePosterCard"
 import Banner from "../Banner/Banner"
 import logo from '../images/logo.png'
 
-const MovieContainer = ({ movieData, randomMovie }) => {
+const MovieContainer = ({ movieData, randomMovie}) => {
   const movieArray = movieData.map(movie => {
     return (
         <MoviePosterCard
