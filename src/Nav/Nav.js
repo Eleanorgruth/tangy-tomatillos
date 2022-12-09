@@ -41,7 +41,12 @@ class Nav extends Component {
             onKeyDown={event => this.handleKeyDown(event)}
             />
           <Link to={`/search/${userInput}`}>
-            <button className='search-button' onClick={this.clearInputs}>Search</button>
+            <button
+              className={this.state.userInput ? 'search-button' : 'search-button-disabled'}
+              onClick={this.clearInputs}
+              disabled={!this.state.userInput}>
+              Search
+            </button>
           </Link>
         </form>
       </nav>
