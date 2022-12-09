@@ -57,10 +57,14 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <main className='App' onKeyDown={this.handleKeyDown}>
-        <Nav filterMovie={this.filterMovie} error={this.state.error}  />
-        {this.state.error && <Error error={33} />}
+        {this.state.error && <Error error={this.state.error} />}
+        <Route
+            exact path='/'
+            render={() => <Nav filterMovie={this.filterMovie} error={this.state.error}  />}
+          />
         <Switch>
 
           <Route
@@ -69,8 +73,8 @@ class App extends Component {
           />
           <Route
             exact path="/:id"
-
-            render={({ match }) => <MovieDetailView selectedID={match.params.id} error={this.state.error}/> }
+            render={({ match }) => <MovieDetailView selectedID={match.params.id} error={this.state.error}/>}
+            // render={({ match }) => !this.state.error ? <MovieDetailView selectedID={match.params.id} error={this.state.error}/> : <Error error={this.state.error}/> }
           />
              
           < Route
@@ -80,6 +84,7 @@ class App extends Component {
               return <MovieContainer userInput={match.params.search} randomMovie={this.state.randomMovie} movieData={this.state.movieData} />
             }}
           />
+          
         </Switch>
       </main>
     )

@@ -4,6 +4,7 @@ import icon from '../images/icon.png'
 import getFetch from "../apiCalls"
 import Error from "../Error/Error"
 import PropTypes from 'prop-types'
+import NavDetailedView from '../NavDetailedView/NavDetailedView'
 
 class MovieDetailView extends Component {
   constructor(props) {
@@ -56,8 +57,10 @@ class MovieDetailView extends Component {
         ? <li>Budget: ${(revenue / 1000).toFixed(0)}K</li>
         : <li>Revenue: not available</li>)
 
+
     return (
       <div>
+        <NavDetailedView />
         {this.state.error && <Error error={this.state.error} />}
         <div className="detail-backdrop-container">
           <img src={backdrop_path} className='poster-styling' />
