@@ -45,10 +45,16 @@ class MovieDetailView extends Component {
     const day = new Date(release_date).getDay()
     const year = new Date(release_date).getFullYear()
     const ratingData = Number(average_rating).toFixed(0) + '/10' + ` `
-    const budgetDataMillions = Math.trunc(budget / 1000000)
-    const budgetDataThousands = Math.trunc(budget / 1000)
-    const revenueDataMillions = Math.trunc(revenue / 1000000)
-    const revenueDataThousands = Math.trunc(revenue / 1000)
+    const budgetMath = budget >= 1000000
+      ? <li>Budget: ${(budget / 1000000).toFixed(0)}M</li>
+      : (budget < 1000000 && budget !== 0
+        ? <li>Budget: ${(budget / 1000).toFixed(0)}K</li>
+        : <li>Budget: not available</li>)
+    const revenueMath = revenue >= 1000000
+      ? <li>Revenue: ${(revenue / 1000000).toFixed(0)}M</li>
+      : (revenue < 1000000 && revenue !== 0
+        ? <li>Budget: ${(revenue / 1000).toFixed(0)}K</li>
+        : <li>Revenue: not available</li>)
 
     return (
       <div>
@@ -70,18 +76,8 @@ class MovieDetailView extends Component {
                   src={icon}
                 />
               </li>
-              {budget >= 1000000
-                ? <li>Budget: ${budgetDataMillions}M</li>
-                : (budget < 1000000 && budget !== 0
-                  ? <li>Budget: ${budgetDataThousands}K</li>
-                  : <li>Budget: not available</li>)
-              }
-              {revenue >= 1000000
-                ? <li>Revenue: ${revenueDataMillions}M</li>
-                : (revenue < 1000000 && revenue !== 0
-                  ? <li>Budget: ${revenueDataThousands}K</li>
-                  : <li>Revenue: not available</li>)
-              }
+              {budgetMath}
+              {revenueMath}
               <li>Runtime: {runtime} minutes</li>
               <li>Release Date: {month} {day}, {year}</li>
               <li>Genres: {genresData}</li>
