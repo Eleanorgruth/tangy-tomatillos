@@ -96,3 +96,7 @@ form {
 .search-button:focus {
   border: 1px solid rgb(219, 0, 182, .8);
 }
+
+/* .search-bar::-webkit-search-cancel-button {
+  filter: hue-rotate(90deg);
+} */

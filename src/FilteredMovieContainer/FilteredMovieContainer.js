@@ -8,7 +8,6 @@ class FilteredMovieContainer extends Component {
     super()
     this.state = {
       movieSearchResults: [],
-      bannerMessage: ''
     }
   }
   componentDidMount = () => {
@@ -17,6 +16,9 @@ class FilteredMovieContainer extends Component {
     })
     this.setState({movieSearchResults: movieSearchResults})
   }
+  // componentWillUnmount= () => {
+  //   this.setState({movieSearchResults: []})
+  // }
   render() {
     const movieArray = this.state.movieSearchResults.map(movie => {
         return (

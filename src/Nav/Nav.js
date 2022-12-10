@@ -33,7 +33,7 @@ class Nav extends Component {
           <img className='icon' alt="pink tomatillo icon" src={icon} tabIndex="0"/>
         </Link>
         <form>
-          <input className='search-bar' type='text'
+          <input className='search-bar' type='search'
             value={this.state.userInput}
             placeholder='Search for a movie...'
             name='userInput' 
@@ -43,7 +43,6 @@ class Nav extends Component {
           <Link to={`/search/${userInput}`}>
             <button
               className={this.state.userInput ? 'search-button' : 'search-button-disabled'}
-              onClick={this.clearInputs}
               disabled={!this.state.userInput}>
               Search
             </button>
