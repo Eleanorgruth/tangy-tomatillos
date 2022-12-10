@@ -21,8 +21,9 @@ class MovieDetailView extends Component {
       .then(data => {
         this.setState({ selectedMovie: data.movie })
       })
-      .catch(error => {
-        this.setState({ error: `Sorry! Something went wrong. Please try again later.` })
+      .catch(errorCode => {
+        console.log("LOOK HERE", errorCode)
+        this.setState({ error: `Sorry! Please try again later. ${errorCode}`})
       })
   }
 
@@ -57,11 +58,10 @@ class MovieDetailView extends Component {
         ? <li>Budget: ${(revenue / 1000).toFixed(0)}K</li>
         : <li>Revenue: not available</li>)
 
-    
+    if (!this.state.error) {
     return (
       <div>
         <NavDetailedView />
-        {this.state.error && <Error error={this.state.error} /> }
         <div className="detail-backdrop-container">
           <img src={backdrop_path} className='poster-styling' />
         </div>
@@ -89,7 +89,9 @@ class MovieDetailView extends Component {
         </div>
       </div>
     )
-
+    } else {
+      return (<div>{<NavDetailedView />}{<Error error={this.state.error} />}</div>)
+    }
   }
 }
 

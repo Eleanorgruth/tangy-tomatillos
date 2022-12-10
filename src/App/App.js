@@ -27,8 +27,8 @@ class App extends Component {
         this.setState({ movieData: data.movies })
         this.getRandomMovie()
       })
-      .catch(error => {
-        this.setState({ error: `Sorry! Something went wrong. Please try again later.` })
+      .catch(errorCode => {
+        this.setState({ error: `Sorry! Please try again later. ${errorCode}`})
       })
   }
 
