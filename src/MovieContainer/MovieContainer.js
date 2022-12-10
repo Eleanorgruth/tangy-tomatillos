@@ -5,7 +5,7 @@ import Banner from "../Banner/Banner"
 import logo from '../images/logo.png'
 import PropTypes from 'prop-types';
 
-const MovieContainer = ({ movieData, randomMovie }) => {
+const MovieContainer = ({ movieData, randomMovie}) => {
   const movieArray = movieData.map(movie => {
     return (
         <MoviePosterCard

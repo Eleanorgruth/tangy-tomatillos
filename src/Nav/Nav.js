@@ -5,51 +5,59 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 
 class Nav extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
-      userInput: props.userInput
+      userInput: ''
     }
-  }
-
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value })
   }
 
   submitSearch = (event) => {
     event.preventDefault()
     this.props.filterMovie(this.state.userInput)
-    //this.clearInputs()
   }
 
-  // clearInputs = () => {
-  //   this.setState({ userInput: ''})
-  // }
+  handleChange = event => {
+    this.setState({ userInput: event.target.value })
+    this.submitSearch(event)
+  }
 
-  handleKeyDown = event => {
-    if (event.key === "Enter") {
-      event.preventDefault()
-      this.submitSearch(event)
-    }
+  clearInputs = () => {
+    this.setState({ userInput: ''})
+    this.props.filterMovie('')
+  }
+
+  handleKeyUp = event => {
+    event.preventDefault()
+    this.submitSearch(event)
+
   }
  
   render() {
     return (
       <nav className='nav-styling'>
         <Link to={`/`}>
-          <img className='icon' alt="pink tomatillo icon" src={icon} tabIndex="0"/>
+          <img
+            className='icon'
+            alt="pink tomatillo icon"
+            src={icon} tabIndex="0"
+            onClick={(event)=>this.clearInputs(event)}
+          />
         </Link>
         <form>
-          <input className='search-bar' type='text'
+          <input className='search-bar' type='search'
             value={this.state.userInput}
             placeholder='Search for a movie...'
             name='userInput' 
             onChange={event => this.handleChange(event)}
-            onKeyDown={event => this.handleKeyDown(event)}
+            onKeyUp={event => this.handleKeyUp(event)}
             />
-          <Link to={`/${this.state.userInput}`}>
-            <button className='search-button' onClick={event => this.submitSearch(event)}>Search</button>
-          </Link>
+          {/* <button
+            className={this.state.userInput ? 'search-button' : 'search-button-disabled'}
+            disabled={!this.state.userInput}
+            onClick={(event)=>this.submitSearch(event)}>
+            Search
+          </button>  */}
         </form>
       </nav>
     )

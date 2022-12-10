@@ -7,17 +7,20 @@ import MovieDetailView from '../MovieDetailView/MovieDetailView'
 import Error from '../Error/Error'
 import { Route, Switch } from 'react-router-dom'
 import getFetch from '../apiCalls'
+import FilteredMovieContainer from '../FilteredMovieContainer/FilteredMovieContainer'
 // import PropTypes from 'prop-types';
+
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
       movieData: [],
-      bannerMessage: '',
       error: '',
       currentView: '',
       randomMovie: {},
+      movieSearchResults: []
+
     }
   }
 
@@ -36,11 +39,14 @@ class App extends Component {
     const movieSearchResults = this.state.movieData.filter(movie => {
       return movie.title.toLowerCase().includes(userInput.toLowerCase())
     })
-    if (!movieSearchResults) {
-      this.setState({ bannerMessage: 'Sorry, no results found. Please try again.' })
-      return
+    if (movieSearchResults.length && userInput) {
+      this.setState({ movieSearchResults: movieSearchResults })
+      this.setState({ error: '' })
+    } else if (!movieSearchResults.length && userInput) {
+      this.setState({ error: 'Sorry no results found. Please try again.' })
+
     } else {
-      this.setState({ movieData: movieSearchResults })
+      this.setState({ movieSearchResults: [] })
     }
   }
 
@@ -57,7 +63,9 @@ class App extends Component {
   }
 
   render() {
-
+    let test = this.state.movieSearchResults.length > 0
+      ? <FilteredMovieContainer movieSearchResults={this.state.movieSearchResults}/>
+      : <MovieContainer randomMovie={this.state.randomMovie} movieData={this.state.movieData} />
     return (
       <main className='App' onKeyDown={this.handleKeyDown}>
         {this.state.error && <Error error={this.state.error} />}
@@ -66,25 +74,22 @@ class App extends Component {
             render={() => <Nav filterMovie={this.filterMovie} error={this.state.error}  />}
           />
         <Switch>
-
           <Route
             exact path='/'
-            render={() => <MovieContainer randomMovie={this.state.randomMovie} movieData={this.state.movieData} />}
+            render={() => test}
           />
           <Route
             exact path="/:id"
             render={({ match }) => <MovieDetailView selectedID={match.params.id} error={this.state.error}/>}
             // render={({ match }) => !this.state.error ? <MovieDetailView selectedID={match.params.id} error={this.state.error}/> : <Error error={this.state.error}/> }
           />
-             
-          < Route
-            exact path="/:search"
+          {/* <Route
+            exact path="/search/:search"
             render={({ match }) => {
-              console.log(match.params.search)
-              return <MovieContainer userInput={match.params.search} randomMovie={this.state.randomMovie} movieData={this.state.movieData} />
+              return <FilteredMovieContainer userInput={match.params.search} movieData={this.state.movieData} />
             }}
           />
-          {/* <Route
+          <Route
             render={() => <Error error={this.state.error} />}
           /> */}
         </Switch>
