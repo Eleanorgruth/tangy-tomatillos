@@ -1,7 +1,6 @@
 import './App.css'
 import React, { Component } from 'react'
 import Nav from '../Nav/Nav'
-import NavDetailedView from '../NavDetailedView/NavDetailedView'
 import MovieContainer from '../MovieContainer/MovieContainer'
 import MovieDetailView from '../MovieDetailView/MovieDetailView'
 import Error from '../Error/Error'
@@ -20,7 +19,6 @@ class App extends Component {
       currentView: '',
       randomMovie: {},
       movieSearchResults: []
-
     }
   }
 
@@ -43,8 +41,7 @@ class App extends Component {
       this.setState({ movieSearchResults: movieSearchResults })
       this.setState({ error: '' })
     } else if (!movieSearchResults.length && userInput) {
-      this.setState({ error: 'Sorry no results found. Please try again.' })
-
+      this.setState({ error: 'Sorry, no results found. Please adjust your search and try again.' })
     } else {
       this.setState({ movieSearchResults: [] })
     }
