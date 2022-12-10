@@ -1,7 +1,6 @@
 import './App.css'
 import React, { Component } from 'react'
 import Nav from '../Nav/Nav'
-import NavDetailedView from '../NavDetailedView/NavDetailedView'
 import MovieContainer from '../MovieContainer/MovieContainer'
 import MovieDetailView from '../MovieDetailView/MovieDetailView'
 import Error from '../Error/Error'
@@ -20,7 +19,6 @@ class App extends Component {
       currentView: '',
       randomMovie: {},
       movieSearchResults: []
-
     }
   }
 
