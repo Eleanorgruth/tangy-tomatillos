@@ -1,11 +1,13 @@
 import './App.css'
 import React, { Component } from 'react'
 import Nav from '../Nav/Nav'
+import NavDetailedView from '../NavDetailedView/NavDetailedView'
 import MovieContainer from '../MovieContainer/MovieContainer'
 import MovieDetailView from '../MovieDetailView/MovieDetailView'
 import Error from '../Error/Error'
 import { Route, Switch } from 'react-router-dom'
 import getFetch from '../apiCalls'
+// import PropTypes from 'prop-types';
 
 class App extends Component {
   constructor() {
@@ -15,7 +17,7 @@ class App extends Component {
       bannerMessage: '',
       error: '',
       currentView: '',
-      randomMovie: {}
+      randomMovie: {},
     }
   }
 
@@ -26,7 +28,7 @@ class App extends Component {
         this.getRandomMovie()
       })
       .catch(error => {
-        this.setState({ error: `Sorry something went wrong. Please try again later.` })
+        this.setState({ error: `Sorry! Something went wrong. Please try again later.` })
       })
   }
 
@@ -35,7 +37,8 @@ class App extends Component {
       return movie.title.toLowerCase().includes(userInput.toLowerCase())
     })
     if (!movieSearchResults) {
-      this.setState({ bannerMessage: 'Sorry no results found. Please try again.' })
+      this.setState({ bannerMessage: 'Sorry, no results found. Please try again.' })
+      return
     } else {
       this.setState({ movieData: movieSearchResults })
     }
@@ -54,10 +57,14 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <main className='App' onKeyDown={this.handleKeyDown}>
-        <Nav filterMovie={this.filterMovie} />
         {this.state.error && <Error error={this.state.error} />}
+        <Route
+            exact path='/'
+            render={() => <Nav filterMovie={this.filterMovie} error={this.state.error}  />}
+          />
         <Switch>
 
           <Route
@@ -66,15 +73,20 @@ class App extends Component {
           />
           <Route
             exact path="/:id"
-            render={({ match }) => <MovieDetailView selectedID={match.params.id} />}
+            render={({ match }) => <MovieDetailView selectedID={match.params.id} error={this.state.error}/>}
+            // render={({ match }) => !this.state.error ? <MovieDetailView selectedID={match.params.id} error={this.state.error}/> : <Error error={this.state.error}/> }
           />
-          <Route
+             
+          < Route
             exact path="/:search"
             render={({ match }) => {
               console.log(match.params.search)
               return <MovieContainer userInput={match.params.search} randomMovie={this.state.randomMovie} movieData={this.state.movieData} />
             }}
           />
+          {/* <Route
+            render={() => <Error error={this.state.error} />}
+          /> */}
         </Switch>
       </main>
     )
@@ -82,3 +94,15 @@ class App extends Component {
 }
 
 export default App
+
+// App.propTypes = {
+//   movieData: PropTypes.array,
+//   bannerMessage: PropTypes.string,
+//   error: PropTypes.string,
+//   currentView: PropTypes.string,
+//   randomMovie: PropTypes.object,
+//   filterMovie: PropTypes.func
+//   getRandomMovie
+//   handleKeyDown
+// };
+

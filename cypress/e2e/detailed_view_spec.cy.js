@@ -55,20 +55,23 @@ describe('Detailed page experience', () => {
       .should('have.length', 1)
   })
 
-  // it('should display error message if server returns 500 error', () => {
-  //   cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/400160', { statusCode: 500, fixture: './spongebob-data.json' })
-  //     .visit('http://localhost:3000/400160')
-  //   cy.contains('There was an issue. Please try again later.')
-  // })
+  it('should display error message if server returns 500 error', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/400160', { statusCode: 500, fixture: './spongebob-data.json' })
+      .visit('http://localhost:3000/400160')
+    cy.contains('Sorry! Something went wrong. Please try again later')
+    cy.get('.error-image').should('exist')
+  })
 
-  // it('should display error message if server returns 400 error', () => {
-  //   cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/400160', { statusCode: 404, fixture: './spongebob-data.json' })
-  //     .visit('http://localhost:3000/400160')
-  //   cy.contains('There was an issue. Please try again later.')
-  // })
+  it('should display error message if server returns 400 error', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/400160', { statusCode: 404, fixture: './spongebob-data.json' })
+      .visit('http://localhost:3000/400160')
+      cy.contains('Sorry! Something went wrong. Please try again later')
+      cy.get('.error-image').should('exist')
+  })
 
-  // it('should display error message if movie does not exist', () => {
-  //   cy.visit('http://localhost:3000/test')
-  //   cy.contains('There was an issue. Please refresh the page and try again.')
-  // })
+  it('should display error message if URL does not exist', () => {
+    cy.visit('http://localhost:3000/test')
+    cy.contains('Sorry! Something went wrong. Please try again later')
+    cy.get('.error-image').should('exist')
+  })
 })
