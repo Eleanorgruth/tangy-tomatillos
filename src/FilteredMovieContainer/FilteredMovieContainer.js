@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import MoviePosterCard from "../MoviePosterCard/MoviePosterCard"
 import logo from '../images/logo.png'
 import PropTypes from 'prop-types'
+import "./FilteredMovieContainer.css"
 
 const FilteredMovieContainer = ({ movieSearchResults }) => {
   const movieArray = movieSearchResults.map(movie => {
