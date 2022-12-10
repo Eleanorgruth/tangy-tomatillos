@@ -31,7 +31,7 @@ class App extends Component {
         this.getRandomMovie()
       })
       .catch(errorCode => {
-        this.setState({ error: `Sorry! Please try again later. ${errorCode}`})
+        this.setState({ error: `Sorry! Please try again later. ${errorCode}` })
       })
   }
 
@@ -64,37 +64,36 @@ class App extends Component {
 
   render() {
     let test = this.state.movieSearchResults.length > 0
-      ? <FilteredMovieContainer movieSearchResults={this.state.movieSearchResults}/>
+      ? <FilteredMovieContainer movieSearchResults={this.state.movieSearchResults} error={this.state.error} />
       : <MovieContainer randomMovie={this.state.randomMovie} movieData={this.state.movieData} />
-    return (
-      <main className='App' onKeyDown={this.handleKeyDown}>
-        {this.state.error && <Error error={this.state.error} />}
-        <Route
-            exact path='/'
-            render={() => <Nav filterMovie={this.filterMovie} error={this.state.error}  />}
-          />
-        <Switch>
+
+    if (!this.state.error) {
+      return (
+        <main className='App' onKeyDown={this.handleKeyDown}>
+          {/* {this.state.error && <Error error={this.state.error} />} */}
           <Route
             exact path='/'
-            render={() => test}
+            render={() => <Nav filterMovie={this.filterMovie} error={this.state.error} />}
           />
-          <Route
-            exact path="/:id"
-            render={({ match }) => <MovieDetailView selectedID={match.params.id} error={this.state.error}/>}
-            // render={({ match }) => !this.state.error ? <MovieDetailView selectedID={match.params.id} error={this.state.error}/> : <Error error={this.state.error}/> }
-          />
-          {/* <Route
-            exact path="/search/:search"
-            render={({ match }) => {
-              return <FilteredMovieContainer userInput={match.params.search} movieData={this.state.movieData} />
-            }}
-          />
-          <Route
-            render={() => <Error error={this.state.error} />}
-          /> */}
-        </Switch>
-      </main>
-    )
+          <Switch>
+            <Route
+              exact path='/'
+              render={() => test}
+            />
+            <Route
+              exact path="/:id"
+              render={({ match }) => <MovieDetailView selectedID={match.params.id} error={this.state.error} />}
+            />
+          </Switch>
+        </main>
+      )
+    } else {
+      return (
+        <main className='App' onKeyDown={this.handleKeyDown}>
+          <Nav filterMovie={this.filterMovie} error={this.state.error} />
+          <Error error={this.state.error} />
+        </main>)
+    }
   }
 }
 

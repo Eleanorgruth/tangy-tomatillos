@@ -20,9 +20,9 @@ form {
 
 .icon {
   cursor: pointer;
-  height: 34px;
-  width: 34px;
-  margin-bottom: -3px;
+  height: 32px;
+  width: 32px;
+  margin-bottom: -5.5px;
 }
 
 .icon:hover {
@@ -49,7 +49,8 @@ form {
 }
 
 .search-bar::-webkit-search-cancel-button {
-  filter: hue-rotate(135deg);
+  /* filter:grayscale(100%); */
+  /* appearance: none; */
 }
 
 .search-bar:hover {
