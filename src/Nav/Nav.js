@@ -11,12 +11,18 @@ class Nav extends Component {
     }
   }
 
+  submitSearch = (event) => {
+    event.preventDefault()
+    this.props.filterMovie(this.state.userInput)
+  }
+
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value })
+    this.setState({ userInput: event.target.value })
   }
 
   clearInputs = () => {
     this.setState({ userInput: ''})
+    this.props.filterMovie('')
   }
 
   handleKeyDown = event => {
@@ -26,7 +32,7 @@ class Nav extends Component {
   }
  
   render() {
-    const {userInput} = this.state
+    // const {userInput} = this.state
     return (
       <nav className='nav-styling'>
         <Link to={`/`}>
@@ -40,13 +46,14 @@ class Nav extends Component {
             onChange={event => this.handleChange(event)}
             onKeyDown={event => this.handleKeyDown(event)}
             />
-          <Link to={`/search/${userInput}`}>
+          {/* <Link to={`/search/${userInput}`}> */}
             <button
               className={this.state.userInput ? 'search-button' : 'search-button-disabled'}
-              disabled={!this.state.userInput}>
+              disabled={!this.state.userInput}
+              onClick={(event)=>this.submitSearch(event)}>
               Search
             </button>
-          </Link>
+          {/* </Link> */}
         </form>
       </nav>
     )
