@@ -4,7 +4,7 @@ import logo from "../images/logo.png"
 import PropTypes from "prop-types"
 import "./FilteredMovieContainer.css"
 
-const FilteredMovieContainer = ({ movieSearchResults }) => {
+const FilteredMovieContainer = ({ movieSearchResults, error }) => {
   const movieArray = movieSearchResults.map(movie => {
     return (
       <MoviePosterCard
@@ -18,6 +18,7 @@ const FilteredMovieContainer = ({ movieSearchResults }) => {
       />
     )
   })
+  if (!error) {
   return (
     <section>
       <img className="logo" src={logo} alt="Logo image for Tangy Tomatillos with pink tomatillo icons" />
@@ -25,6 +26,7 @@ const FilteredMovieContainer = ({ movieSearchResults }) => {
       <section className="container-styling">{movieArray}</section>
     </section>
   )
+}
 }
 
 export default FilteredMovieContainer
