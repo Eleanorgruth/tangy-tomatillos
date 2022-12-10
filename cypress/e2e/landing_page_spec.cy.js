@@ -5,6 +5,11 @@ describe("Tangy Tomatillos landing page", () => {
       method: "GET",
       fixture: "../fixtures/movie-data.json"
     })
+    cy.intercept("https://rancid-tomatillos.herokuapp.com/api/v2/movies/337401", {
+      statusCode: 201,
+      method: "GET",
+      fixture: "../fixtures/mulan-data.json"
+    })
     cy.visit("http://localhost:3000")
   })
   it("should display the title of the site", () => {
@@ -67,6 +72,12 @@ describe("Tangy Tomatillos landing page", () => {
     cy.get(".icon-styling")
       .should("have.attr", "alt", "pink tomatillo icon")
   })
+  it("should display the movie detail view if a user clicks on a movie poster", () => {
+    cy.get(":nth-child(2) > a > .movie-image-styling")
+      .click()
+    cy.get(".detail-title")
+      .should("have.text", "Mulan")
+  })
   it("should display error message if data is missing", () => {
     cy.intercept("GET", "https://rancid-tomatillos.herokuapp.com/api/v2/movies", { 
       statusCode: 500,
@@ -74,5 +85,8 @@ describe("Tangy Tomatillos landing page", () => {
       fixture: "./movie-data.json" })
     cy.visit("http://localhost:3000/")
       .contains("Sorry! Please try again later. Error: Internal Server Error")
+    cy.get('.error-image')
+    .should("have.attr", "alt")
+    .should("include", "sad pink tomatillo image")
   });
 })
