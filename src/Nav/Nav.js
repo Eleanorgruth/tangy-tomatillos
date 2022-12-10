@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Nav.css'
 import icon from '../images/icon.png'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
 
 class Nav extends Component {
   constructor() {
@@ -62,5 +63,10 @@ class Nav extends Component {
     )
   }
 }
+
+Nav.propTypes = {
+  userInput: PropTypes.string,
+  filterMovie: PropTypes.func.isRequired,
+};
 
 export default Nav

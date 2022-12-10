@@ -20,7 +20,7 @@ describe('Detailed page experience', () => {
     cy.get('.detail-right-container')
     cy.contains('Mulan')
     cy.contains('When the Emperor of China issues a decree that one man per family must serve in the Imperial Chinese Army to defend the country from Huns, Hua Mulan, the eldest daughter of an honored warrior, steps in to take the place of her ailing father. She is spirited, determined and quick on her feet. Disguised as a man by the name of Hua Jun, she is tested every step of the way and must harness her innermost strength and embrace her true potential.')
-    cy.contains('Rating: 5.1/10')
+    cy.contains('Rating: 5/10')
     cy.get('.detail-icon-styling').should('exist')
     cy.contains('Budget: $200M')
     cy.contains('Revenue: $57M')
@@ -55,20 +55,23 @@ describe('Detailed page experience', () => {
       .should('have.length', 1)
   })
 
-  // it('should display error message if server returns 500 error', () => {
-  //   cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/400160', { statusCode: 500, fixture: './spongebob-data.json' })
-  //     .visit('http://localhost:3000/400160')
-  //   cy.contains('There was an issue. Please try again later.')
-  // })
+  it('should display error message if server returns 500 error', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/400160', { statusCode: 500, fixture: './spongebob-data.json' })
+      .visit('http://localhost:3000/400160')
+    cy.contains('Sorry! Please try again later. Error:')
+    cy.get('.error-image').should('exist')
+  })
 
-  // it('should display error message if server returns 400 error', () => {
-  //   cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/400160', { statusCode: 404, fixture: './spongebob-data.json' })
-  //     .visit('http://localhost:3000/400160')
-  //   cy.contains('There was an issue. Please try again later.')
-  // })
+  it('should display error message if server returns 400 error', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/400160', { statusCode: 404, fixture: './spongebob-data.json' })
+      .visit('http://localhost:3000/400160')
+      cy.contains('Sorry! Please try again later. Error: Not Found')
+      cy.get('.error-image').should('exist')
+  })
 
-  // it('should display error message if movie does not exist', () => {
-  //   cy.visit('http://localhost:3000/test')
-  //   cy.contains('There was an issue. Please refresh the page and try again.')
-  // })
+  it('should display error message if URL does not exist', () => {
+    cy.visit('http://localhost:3000/test')
+    cy.contains('Sorry! Please try again later. Error: Internal Server Error')
+    cy.get('.error-image').should('exist')
+  })
 })
