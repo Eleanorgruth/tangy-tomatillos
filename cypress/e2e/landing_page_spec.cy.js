@@ -41,6 +41,15 @@ describe("Tangy Tomatillos landing page", () => {
     cy.get(".movie-image-styling")
       .should("have.length", 5)
   })
+  it("should give an error message if there are no search results", () => {
+    cy.get("input[name='userInput']")
+      .type("Harry Potter")
+    cy.get(".error-message")
+      .contains("Sorry, no results found. Please adjust your search and try again")
+    cy.get(".error-image")
+      .should("have.attr", "alt")
+      .should("include", "sad pink tomatillo image")
+  })  
   it("should display a banner of a randomly selected trending movie", () => {
     cy.get(".banner-container")
       .contains("Trending in movies")
