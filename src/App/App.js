@@ -43,8 +43,7 @@ class App extends Component {
       this.setState({ movieSearchResults: movieSearchResults })
       this.setState({ error: '' })
     } else if (!movieSearchResults.length && userInput) {
-      this.setState({ error: 'Sorry no results found. Please try again.' })
-
+      this.setState({ error: 'Sorry, no results found. Please adjust your search and try again.' })
     } else {
       this.setState({ movieSearchResults: [] })
     }
