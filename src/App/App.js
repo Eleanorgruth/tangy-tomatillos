@@ -66,11 +66,10 @@ class App extends Component {
     let test = this.state.movieSearchResults.length > 0
       ? <FilteredMovieContainer movieSearchResults={this.state.movieSearchResults} error={this.state.error} />
       : <MovieContainer randomMovie={this.state.randomMovie} movieData={this.state.movieData} />
-
-    if (!this.state.error) {
+      
       return (
         <main className='App' onKeyDown={this.handleKeyDown}>
-          {/* {this.state.error && <Error error={this.state.error} />} */}
+          {this.state.error && <Error error={this.state.error} />}
           <Route
             exact path='/'
             render={() => <Nav filterMovie={this.filterMovie} error={this.state.error} />}
@@ -87,14 +86,7 @@ class App extends Component {
           </Switch>
         </main>
       )
-    } else {
-      return (
-        <main className='App' onKeyDown={this.handleKeyDown}>
-          <Nav filterMovie={this.filterMovie} error={this.state.error} />
-          <Error error={this.state.error} />
-        </main>)
     }
-  }
 }
 
 export default App
