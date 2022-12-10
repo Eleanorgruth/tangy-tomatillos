@@ -32,11 +32,15 @@ class Nav extends Component {
   }
  
   render() {
-    // const {userInput} = this.state
     return (
       <nav className='nav-styling'>
         <Link to={`/`}>
-          <img className='icon' alt="pink tomatillo icon" src={icon} tabIndex="0"/>
+          <img
+            className='icon'
+            alt="pink tomatillo icon"
+            src={icon} tabIndex="0"
+            onClick={(event)=>this.clearInputs(event)}
+          />
         </Link>
         <form>
           <input className='search-bar' type='search'
@@ -44,15 +48,15 @@ class Nav extends Component {
             placeholder='Search for a movie...'
             name='userInput' 
             onChange={event => this.handleChange(event)}
-            onKeyDown={event => this.handleKeyDown(event)}
+            // onKeyDown={event => this.handleKeyDown(event)}
             />
-          {/* <Link to={`/search/${userInput}`}> */}
+          {/* <Link to={`/search/${this.state.userInput}`}> */}
             <button
               className={this.state.userInput ? 'search-button' : 'search-button-disabled'}
               disabled={!this.state.userInput}
               onClick={(event)=>this.submitSearch(event)}>
               Search
-            </button>
+            </button> 
           {/* </Link> */}
         </form>
       </nav>
