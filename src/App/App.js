@@ -13,7 +13,6 @@ class App extends Component {
     super()
     this.state = {
       movieData: [],
-      bannerMessage: '',
       error: '',
       currentView: '',
       randomMovie: {},
@@ -31,7 +30,6 @@ class App extends Component {
         this.setState({ error: `Sorry something went wrong. Please try again later.` })
       })
   }
-
 
   filterMovie = (userInput) => {
     const movieSearchResults = this.state.movieData.filter(movie => {
