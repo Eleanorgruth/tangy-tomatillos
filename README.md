@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Tangy Tomatillos 
+Tangy Tomatillos was built over a two week period from design to launch by a remote team of two and allows users to discover and learn about films. This project was developed in Turing's front-end software engineering program and focused on our ability to utilize the React framework and ecosystem of tools to optimizes performance and usability with a multi-page experience. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Landing page view
+![landing-page](https://user-images.githubusercontent.com/110144802/206880552-6e3b683d-8157-4b51-951a-a140facfcc88.gif)
 
-## Available Scripts
+### Movie detail view
+![detail-page](https://user-images.githubusercontent.com/110144802/206880624-bac6bcfa-5c70-4f8b-851c-c464349adb9c.gif)
 
-In the project directory, you can run:
+### Search feature with error handling 
+![search](https://user-images.githubusercontent.com/110144802/206880657-7a391bce-24e1-4e85-b94f-0d07359dd5e3.gif)
 
-### `npm start`
+## Contributor GitHub Links
+- [Tim Thomas](https://github.com/nalito223)
+- [Eleanor Ruth](https://github.com/Eleanorgruth)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies
+- Cypress e2e testing 
+- React Router
+- Webpack module bundler 
+- Fetch API 
+- Git/GitHub
+- GitHub project board 
+- JavaScript
+- CSS 
+- HTML 
+- Node.JS
+- Excalidraw 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Methodologies
+- End to end testing using Cypress
+- Error handling the user experience and network errors 
+- React component architecture 
+- Data validation using PropTypes
+- Asynchronous JS 
+- Create a user interface that is easy to use and clearly displays information
+- Write modular, reusable code that follows SRP (Single Responsibility Principle)
+- Make network requests to retrieve data
+- Demonstrate DRY principles 
+- Utilize Agile/Scrum project management 
+- Develop user sories and subsequent acceptance criteria tickets 
 
-### `npm test`
+## Documentation
+Design document for our UI, data model, and React component architecture 
+![Screen Shot 2022-12-10 at 2 47 28 PM](https://user-images.githubusercontent.com/110144802/206881210-f3d89beb-5bc3-469f-9df1-371731fa20d1.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Agile/Scrum Board 
+![Screen Shot 2022-12-10 at 2 44 29 PM](https://user-images.githubusercontent.com/110144802/206881258-8822a361-b06c-4247-be5b-7573ff642a5a.png)
 
-### `npm run build`
+User story ticket broken down into acceptance criteria 
+![Screen Shot 2022-12-10 at 2 46 06 PM](https://user-images.githubusercontent.com/110144802/206881260-41c7f013-4050-4c0a-a7fb-a0dcb63e0c70.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Installation Instructions
+1. Fork this repository.
+2. Clone your new, forked repository to your local machine.
+3. In a seperate tab, `cd` into the main project repository on your local machine and run `npm install`, then npm start to launch the application's server.
+4. Open the link to your local server (listed in your terminal) in your web browser to view the live page.
