@@ -13,6 +13,8 @@ class MovieDetailView extends Component {
       id: props.selectedID,
       selectedMovie: props.selectedID,
       error: props.error,
+      randomVideo: {},
+      videoMessage: ""
     }
   }
 
@@ -22,8 +24,15 @@ class MovieDetailView extends Component {
         this.setState({ selectedMovie: data.movie })
       })
       .catch(errorCode => {
-        console.log("LOOK HERE", errorCode)
-        this.setState({ error: `Sorry! Please try again later. ${errorCode}`})
+        this.setState({ error: `Sorry! Please try again later. ${errorCode}` })
+      })
+    getFetch(`movies/${this.state.id}/videos`)
+      .then(data => {
+          this.setState({ randomVideo: data.videos[0].key })
+          this.setState({videoMessage: "Watch trailer"})
+      })
+      .catch(errorCode => {
+        this.setState({videoMessage: "No trailer found"})
       })
   }
 
@@ -49,46 +58,61 @@ class MovieDetailView extends Component {
     const ratingData = Number(average_rating).toFixed(0) + '/10' + ` `
     const budgetMath = budget >= 1000000
       ? <li>Budget: ${(budget / 1000000).toFixed(0)}M</li>
-      : (budget < 1000000 && budget !== 0
+      : (budget < 1000000 && budget > 1000 && budget !== 0 
         ? <li>Budget: ${(budget / 1000).toFixed(0)}K</li>
         : <li>Budget: not available</li>)
     const revenueMath = revenue >= 1000000
       ? <li>Revenue: ${(revenue / 1000000).toFixed(0)}M</li>
-      : (revenue < 1000000 && revenue !== 0
+      : (revenue < 1000000 && revenue > 1000 && revenue !== 0
         ? <li>Budget: ${(revenue / 1000).toFixed(0)}K</li>
         : <li>Revenue: not available</li>)
 
     if (!this.state.error) {
-    return (
-      <div>
-        <NavDetailedView />
-        <div className="detail-backdrop-container">
-          <img src={backdrop_path} className='poster-styling' />
-        </div>
-        <div className="detail-container">
-          <div className="detail-left-container">
-            <img src={poster_path} className="detail-poster" />
+      return (
+        <div>
+          <NavDetailedView />
+          <div className="detail-backdrop-container">
+            <img src={backdrop_path} className='poster-styling' />
           </div>
-          <div className="detail-right-container">
-            <h1 className="detail-title">{title}</h1>
-            <h3 className="detail-tagline">{tagline}</h3>
-            <p className="overview">{overview}</p>
-            <ul>
-              <li>Rating: {ratingData}
-                <img className='detail-icon-styling'
-                  src={icon}
-                />
-              </li>
-              {budgetMath}
-              {revenueMath}
-              <li>Runtime: {runtime} minutes</li>
-              <li>Release Date: {month} {day}, {year}</li>
-              <li>Genres: {genresData}</li>
-            </ul>
+          <div className="detail-container">
+            <div className="detail-left-container">
+              <img src={poster_path} className="detail-poster" />
+            </div>
+            <div className="detail-right-container">
+              <h1 className="detail-title">{title}</h1>
+              <h3 className="detail-tagline">{tagline}</h3>
+              <p className="overview">{overview}</p>
+              <ul>
+                <li>Rating: {ratingData}
+                  <img className='detail-icon-styling'
+                    src={icon}
+                  />
+                </li>
+                {budgetMath}
+                {revenueMath}
+                <li>Runtime: {runtime} minutes</li>
+                <li>Release Date: {month} {day}, {year}</li>
+                <li>Genres: {genresData}</li>
+              </ul>
+
+            </div>
           </div>
+            
+          <div className='video-container'>
+            <h2>{this.state.videoMessage}</h2> 
+            <iframe
+              src={`https://www.youtube.com/embed/${this.state.randomVideo}`}
+              title="YouTube Video"
+              frameBorder="0"
+              width="100%"
+              height="100%"
+              allowFullScreen
+            >
+            </iframe>
+          </div> 
+            
         </div>
-      </div>
-    )
+      )
     } else {
       return (<div>{<NavDetailedView />}{<Error error={this.state.error} />}</div>)
     }
