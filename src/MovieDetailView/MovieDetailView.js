@@ -13,6 +13,8 @@ class MovieDetailView extends Component {
       id: props.selectedID,
       selectedMovie: {},
       error: props.error,
+      randomVideo: {},
+      videoMessage: ""
     }
   }
 
@@ -22,8 +24,15 @@ class MovieDetailView extends Component {
         this.setState({ selectedMovie: data.movie })
       })
       .catch(errorCode => {
-        console.log("Error", errorCode)
         this.setState({ error: `Sorry! Please try again later. ${errorCode}` })
+      })
+    getFetch(`movies/${this.state.id}/videos`)
+      .then(data => {
+          this.setState({ randomVideo: data.videos[0].key })
+          this.setState({videoMessage: "Watch trailer"})
+      })
+      .catch(errorCode => {
+        this.setState({videoMessage: "No trailer found"})
       })
   }
 
@@ -49,12 +58,12 @@ class MovieDetailView extends Component {
     const ratingData = Number(average_rating).toFixed(0) + '/10' + ` `
     const budgetMath = budget >= 1000000
       ? <li>Budget: ${(budget / 1000000).toFixed(0)}M</li>
-      : (budget < 1000000 && budget !== 0
+      : (budget < 1000000 && budget > 1000 && budget !== 0 
         ? <li>Budget: ${(budget / 1000).toFixed(0)}K</li>
         : <li>Budget: not available</li>)
     const revenueMath = revenue >= 1000000
       ? <li>Revenue: ${(revenue / 1000000).toFixed(0)}M</li>
-      : (revenue < 1000000 && revenue !== 0
+      : (revenue < 1000000 && revenue > 1000 && revenue !== 0
         ? <li>Budget: ${(revenue / 1000).toFixed(0)}K</li>
         : <li>Revenue: not available</li>)
 
@@ -87,6 +96,20 @@ class MovieDetailView extends Component {
               </ul>
             </div>
           </div>
+            
+          <div className='video-container'>
+            <h2>{this.state.videoMessage}</h2> 
+            <iframe
+              src={`https://www.youtube.com/embed/${this.state.randomVideo}`}
+              title="YouTube Video"
+              frameBorder="0"
+              width="100%"
+              height="100%"
+              allowFullScreen
+            >
+            </iframe>
+          </div> 
+            
         </div>
       )
     } else {

@@ -9,11 +9,14 @@
 .detail-container {
   display: flex;
   flex-direction: row;
+  margin-top: 8%;
   margin-bottom: 10%;
 }
 
 .detail-poster {
-  height: 50vh;
+  height: 64vh;
+  padding-right: 20px;
+  margin-top: -1%;
 }
 
 .detail-right-container {
@@ -62,4 +65,10 @@ li {
 .detail-icon-styling {
   height: 2.75vh;
   margin-bottom: -5px;
+}
+
+.video-container {
+  margin-top: -5%;
+  height:64vh;
+  margin-bottom: 15%;
 }
