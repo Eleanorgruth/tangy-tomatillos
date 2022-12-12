@@ -30,11 +30,15 @@ describe('Detailed page experience', () => {
   })
 
   it('should display movie poster for selected movie', () => {
-    cy.get('.detail-poster').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg')
+    cy.get('.detail-poster')
+      .should('have.attr', 'src')
+      .should('include', 'https://image.tmdb.org/t/p/original//aKx1ARwG55zZ0GpRvU2WrGrCG9o.jpg')
   })
 
   it('should display movie backdrop', () => {
-    cy.get('.poster-styling').should('have.attr', 'src').should('include', 'https://image.tmdb.org/t/p/original//zzWGRw277MNoCs3zhyG3YmYQsXv.jpg')
+    cy.get('.poster-styling')
+      .should('have.attr', 'src')
+      .should('include', 'https://image.tmdb.org/t/p/original//zzWGRw277MNoCs3zhyG3YmYQsXv.jpg')
   })
 
   it('should display tagline and a message if revenue or budget info is not available', () => {
@@ -55,23 +59,43 @@ describe('Detailed page experience', () => {
       .should('have.length', 1)
   })
 
+  it('should display a movie trailer if available', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/829799/videos', { fixture: './movie-trailer.json' })
+    cy.visit('http://localhost:3000/829799')
+    cy.get('h2')
+      .contains('Watch trailer')
+    cy.get('iframe')
+      .should('exist')
+  })
+
+  it('should display a message if no trailer is found', () => {
+    cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/829799/videos', { fixture: './movie-trailer-2.json' })
+    cy.visit('http://localhost:3000/820067')
+    cy.get('h2')
+      .contains('No trailer found')
+  })
+
+
   it('should display error message if server returns 500 error', () => {
     cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/400160', { statusCode: 500, fixture: './spongebob-data.json' })
       .visit('http://localhost:3000/400160')
     cy.contains('Sorry! Please try again later. Error:')
-    cy.get('.error-image').should('exist')
+    cy.get('.error-image')
+      .should('exist')
   })
 
   it('should display error message if server returns 400 error', () => {
     cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/400160', { statusCode: 404, fixture: './spongebob-data.json' })
       .visit('http://localhost:3000/400160')
-      cy.contains('Sorry! Please try again later. Error: Not Found')
-      cy.get('.error-image').should('exist')
+    cy.contains('Sorry! Please try again later. Error: Not Found')
+    cy.get('.error-image')
+      .should('exist')
   })
 
   it('should display error message if URL does not exist', () => {
     cy.visit('http://localhost:3000/test')
     cy.contains('Sorry! Please try again later. Error: Internal Server Error')
-    cy.get('.error-image').should('exist')
+    cy.get('.error-image')
+      .should('exist')
   })
 })
