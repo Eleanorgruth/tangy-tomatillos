@@ -32,5 +32,6 @@ const FilteredMovieContainer = ({ movieSearchResults, error }) => {
 export default FilteredMovieContainer
 
 FilteredMovieContainer.propTypes = {
-  movieSearchResults: PropTypes.array.isRequired
+  movieSearchResults: PropTypes.array.isRequired,
+  error: PropTypes.string
 }

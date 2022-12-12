@@ -11,7 +11,7 @@ class MovieDetailView extends Component {
     super(props)
     this.state = {
       id: props.selectedID,
-      selectedMovie: props.selectedID,
+      selectedMovie: {},
       error: props.error,
     }
   }
@@ -22,8 +22,8 @@ class MovieDetailView extends Component {
         this.setState({ selectedMovie: data.movie })
       })
       .catch(errorCode => {
-        console.log("LOOK HERE", errorCode)
-        this.setState({ error: `Sorry! Please try again later. ${errorCode}`})
+        console.log("Error", errorCode)
+        this.setState({ error: `Sorry! Please try again later. ${errorCode}` })
       })
   }
 
@@ -59,38 +59,43 @@ class MovieDetailView extends Component {
         : <li>Revenue: not available</li>)
 
     if (!this.state.error) {
-    return (
-      <div>
-        <NavDetailedView />
-        <div className="detail-backdrop-container">
-          <img src={backdrop_path} className='poster-styling' />
-        </div>
-        <div className="detail-container">
-          <div className="detail-left-container">
-            <img src={poster_path} className="detail-poster" />
+      return (
+        <div>
+          <NavDetailedView />
+          <div className="detail-backdrop-container">
+            <img src={backdrop_path} className='poster-styling' />
           </div>
-          <div className="detail-right-container">
-            <h1 className="detail-title">{title}</h1>
-            <h3 className="detail-tagline">{tagline}</h3>
-            <p className="overview">{overview}</p>
-            <ul>
-              <li>Rating: {ratingData}
-                <img className='detail-icon-styling'
-                  src={icon}
-                />
-              </li>
-              {budgetMath}
-              {revenueMath}
-              <li>Runtime: {runtime} minutes</li>
-              <li>Release Date: {month} {day}, {year}</li>
-              <li>Genres: {genresData}</li>
-            </ul>
+          <div className="detail-container">
+            <div className="detail-left-container">
+              <img src={poster_path} className="detail-poster" />
+            </div>
+            <div className="detail-right-container">
+              <h1 className="detail-title">{title}</h1>
+              <h3 className="detail-tagline">{tagline}</h3>
+              <p className="overview">{overview}</p>
+              <ul>
+                <li>Rating: {ratingData}
+                  <img className='detail-icon-styling'
+                    src={icon}
+                  />
+                </li>
+                {budgetMath}
+                {revenueMath}
+                <li>Runtime: {runtime} minutes</li>
+                <li>Release Date: {month} {day}, {year}</li>
+                <li>Genres: {genresData}</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    )
+      )
     } else {
-      return (<div>{<NavDetailedView />}{<Error error={this.state.error} />}</div>)
+      return (
+        <div>
+          <NavDetailedView />
+          <Error error={this.state.error} />
+        </div>
+      )
     }
   }
 }
