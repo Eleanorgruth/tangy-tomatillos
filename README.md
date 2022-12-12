@@ -1,5 +1,5 @@
 # Tangy Tomatillos 
-Tangy Tomatillos was built over a two week period from design to launch by a remote team of two and allows users to discover and learn about films. This project was developed in Turing's front-end software engineering program and focused on our ability to utilize the React framework and ecosystem of tools to optimizes performance and usability with a multi-page experience. 
+Tangy Tomatillos was built over a two week period from design to launch by a remote team of two and allows users to discover and learn about films. This project was developed in Turing's front-end software engineering program and focused on our ability to utilize the React framework and ecosystem of tools to optimize performance and usability with a multi-page experience. 
 
 ### Landing page view
 ![landing-page](https://user-images.githubusercontent.com/110144802/206880552-6e3b683d-8157-4b51-951a-a140facfcc88.gif)
