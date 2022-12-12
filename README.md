@@ -38,7 +38,7 @@ Tangy Tomatillos was built over a two week period from design to launch by a rem
 - Make network requests to retrieve data
 - Demonstrate DRY principles 
 - Utilize Agile/Scrum project management 
-- Develop user sories and subsequent acceptance criteria tickets 
+- Develop user stories and subsequent acceptance criteria tickets 
 
 ## Documentation
 Design document for our UI, data model, and React component architecture 
@@ -54,5 +54,5 @@ User story ticket broken down into acceptance criteria
 ## Installation Instructions
 1. Fork this repository.
 2. Clone your new, forked repository to your local machine.
-3. In a seperate tab, `cd` into the main project repository on your local machine and run `npm install`, then npm start to launch the application's server.
+3. In a seperate tab, `cd` into the main project repository on your local machine and run `npm install`, then `npm start` to launch the application's server.
 4. Open the link to your local server (listed in your terminal) in your web browser to view the live page.
