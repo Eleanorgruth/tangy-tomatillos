@@ -19,20 +19,21 @@ class MovieDetailView extends Component {
   }
 
   componentDidMount = () => {
+    window.scrollTo(0, 0)
+    getFetch(`movies/${this.state.id}/videos`)
+    .then(data => {
+      this.setState({ randomVideo: data.videos[0].key })
+      this.setState({videoMessage: "Watch trailer"})
+    })
+    .catch(errorCode => {
+      this.setState({videoMessage: "No trailer found"})
+    })
     getFetch(`movies/${this.state.id}`)
       .then(data => {
         this.setState({ selectedMovie: data.movie })
       })
       .catch(errorCode => {
         this.setState({ error: `Sorry! Please try again later. ${errorCode}` })
-      })
-    getFetch(`movies/${this.state.id}/videos`)
-      .then(data => {
-          this.setState({ randomVideo: data.videos[0].key })
-          this.setState({videoMessage: "Watch trailer"})
-      })
-      .catch(errorCode => {
-        this.setState({videoMessage: "No trailer found"})
       })
   }
 
