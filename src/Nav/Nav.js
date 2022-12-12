@@ -18,7 +18,7 @@ class Nav extends Component {
     this.props.filterMovie(this.state.userInput)
   }
 
-  clearInputs = (event) => {
+  clearInputs = () => {
     this.setState({ userInput: ''})
     this.props.filterMovie('')
   }
@@ -36,7 +36,7 @@ class Nav extends Component {
             className='icon'
             alt='pink tomatillo icon'
             src={icon} tabIndex='0'
-            onClick={(event)=>this.clearInputs(event)}
+            onClick={()=>this.clearInputs()}
           />
         </Link>
         <form>
