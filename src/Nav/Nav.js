@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './Nav.css'
 import icon from '../images/icon.png'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 class Nav extends Component {
   constructor() {
@@ -12,13 +12,7 @@ class Nav extends Component {
     }
   }
 
-  // submitSearch = (event) => {
-  //   event.preventDefault()
-  //   this.props.filterMovie(this.state.userInput)
-  // }
-
   handleChange = event => {
-    // event.preventDefault()
     this.setState({ userInput: event.target.value })
     this.props.filterMovie(this.state.userInput)
   }
@@ -31,7 +25,6 @@ class Nav extends Component {
   handleKeyUp = event => {
     event.preventDefault()
     this.props.filterMovie(this.state.userInput)
-
   }
  
   render() {
@@ -40,8 +33,8 @@ class Nav extends Component {
         <Link to={`/`}>
           <img
             className='icon'
-            alt="pink tomatillo icon"
-            src={icon} tabIndex="0"
+            alt='pink tomatillo icon'
+            src={icon} tabIndex='0'
             onClick={(event)=>this.clearInputs(event)}
           />
         </Link>
