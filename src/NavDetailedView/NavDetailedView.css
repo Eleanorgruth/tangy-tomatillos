@@ -26,8 +26,6 @@ form {
 }
 
 .icon:hover {
-  /* transition-duration: 400ms;
-  transform: scale(1.1); */
     cursor: pointer;
     transform: scale(1.04);
     transform: rotate(6deg);
@@ -38,24 +36,16 @@ form {
   margin-left: 10px;
   border-radius: 16px;
   outline: 0;
-  /* border: 1px solid rgb(255, 255, 255, .8); */
   border: none;
   padding: 0px 23px 0px;
   font-size: 15px;
   height: 30px;
   color: rgb(255, 255, 255);
-  /* background-color: rgb(0,0,0, .7); */
   background-color: rgb(255,255,255, .2);
-}
-
-.search-bar::-webkit-search-cancel-button {
-  /* filter:grayscale(100%); */
-  /* appearance: none; */
 }
 
 .search-bar:hover {
   border: 1px solid rgb(219, 0, 182, .8);
-  /* transition-duration: 400ms; */
 }
 
 .search-bar:focus {
@@ -73,14 +63,12 @@ form {
   padding-top: 2px;
   padding-bottom: 2px;
   color: gray;
-  /* border: 1px solid rgb(255, 255, 255, .8); */
   border: none;
   height: 30px;
 }
 
 .search-button:hover {
   border: 1px solid rgb(219, 0, 182, .8);
-  /* transition-duration: 400ms; */
 }
 
 .search-button:focus {

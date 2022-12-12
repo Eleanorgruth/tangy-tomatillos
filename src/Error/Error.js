@@ -13,7 +13,7 @@ const Error = ({ error }) => {
       />
     </h2>
   )
-}
+} 
 
 Error.propTypes = {
   error: PropTypes.string.isRequired,
