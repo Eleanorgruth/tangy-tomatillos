@@ -14,7 +14,6 @@ class App extends Component {
     this.state = {
       movieData: [],
       error: '',
-      currentView: '',
       randomMovie: {},
       movieSearchResults: []
     }

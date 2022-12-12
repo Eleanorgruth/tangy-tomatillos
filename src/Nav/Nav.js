@@ -13,6 +13,7 @@ class Nav extends Component {
   }
 
   handleChange = event => {
+    event.preventDefault()
     this.setState({ userInput: event.target.value })
     this.props.filterMovie(this.state.userInput)
   }
