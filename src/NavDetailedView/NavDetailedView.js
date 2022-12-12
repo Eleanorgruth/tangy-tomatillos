@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './NavDetailedView.css'
 import icon from '../images/icon.png'
 import { Link } from 'react-router-dom'
