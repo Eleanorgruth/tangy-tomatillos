@@ -7,7 +7,6 @@ const getFetch = (address) => {
         return response.json()
     }
   })
-  // .catch(error => console.log("TEST",error))
 }
 
 export default getFetch

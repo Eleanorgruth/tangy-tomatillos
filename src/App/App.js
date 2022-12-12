@@ -7,8 +7,6 @@ import Error from '../Error/Error'
 import { Route, Switch } from 'react-router-dom'
 import getFetch from '../apiCalls'
 import FilteredMovieContainer from '../FilteredMovieContainer/FilteredMovieContainer'
-// import PropTypes from 'prop-types';
-
 
 class App extends Component {
   constructor() {
@@ -16,14 +14,13 @@ class App extends Component {
     this.state = {
       movieData: [],
       error: '',
-      currentView: '',
       randomMovie: {},
       movieSearchResults: []
     }
   }
 
   componentDidMount = () => {
-    getFetch("movies")
+    getFetch('movies')
       .then(data => {
         this.setState({ movieData: data.movies })
         this.getRandomMovie()
@@ -53,49 +50,38 @@ class App extends Component {
   }
 
   handleKeyDown = event => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       event.preventDefault()
       event.target.click()
     }
   }
 
   render() {
-    let test = this.state.movieSearchResults.length > 0
+    let displayView = this.state.movieSearchResults.length > 0
       ? <FilteredMovieContainer movieSearchResults={this.state.movieSearchResults} error={this.state.error} />
       : <MovieContainer randomMovie={this.state.randomMovie} movieData={this.state.movieData} />
-      
-      return (
-        <main className='App' onKeyDown={this.handleKeyDown}>
-          {this.state.error && <Error error={this.state.error} />}
+
+    return (
+      <main className='App' onKeyDown={this.handleKeyDown}>
+        {this.state.error && <Error error={this.state.error} />}
+        <Route
+          exact path='/'
+          render={() => <Nav filterMovie={this.filterMovie} error={this.state.error} />}
+        />
+        <Switch>
           <Route
             exact path='/'
-            render={() => <Nav filterMovie={this.filterMovie} error={this.state.error} />}
+            render={() => displayView}
           />
-          <Switch>
-            <Route
-              exact path='/'
-              render={() => test}
-            />
-            <Route
-              exact path="/:id"
-              render={({ match }) => <MovieDetailView selectedID={match.params.id} error={this.state.error} />}
-            />
-          </Switch>
-        </main>
-      )
-    }
+          <Route
+            exact path='/:id'
+            render={({ match }) => <MovieDetailView selectedID={match.params.id} error={this.state.error} />}
+          />
+        </Switch>
+      </main>
+    )
+  }
 }
 
 export default App
-
-// App.propTypes = {
-//   movieData: PropTypes.array,
-//   bannerMessage: PropTypes.string,
-//   error: PropTypes.string,
-//   currentView: PropTypes.string,
-//   randomMovie: PropTypes.object,
-//   filterMovie: PropTypes.func
-//   getRandomMovie
-//   handleKeyDown
-// };
 

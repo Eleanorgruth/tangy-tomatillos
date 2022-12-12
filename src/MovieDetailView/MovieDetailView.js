@@ -11,7 +11,7 @@ class MovieDetailView extends Component {
     super(props)
     this.state = {
       id: props.selectedID,
-      selectedMovie: props.selectedID,
+      selectedMovie: {},
       error: props.error,
       randomVideo: {},
       videoMessage: ""
@@ -94,7 +94,6 @@ class MovieDetailView extends Component {
                 <li>Release Date: {month} {day}, {year}</li>
                 <li>Genres: {genresData}</li>
               </ul>
-
             </div>
           </div>
             
@@ -114,7 +113,12 @@ class MovieDetailView extends Component {
         </div>
       )
     } else {
-      return (<div>{<NavDetailedView />}{<Error error={this.state.error} />}</div>)
+      return (
+        <div>
+          <NavDetailedView />
+          <Error error={this.state.error} />
+        </div>
+      )
     }
   }
 }
