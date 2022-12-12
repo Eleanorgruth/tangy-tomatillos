@@ -5,7 +5,7 @@ Tangy Tomatillos was built over a two week period from design to launch by a rem
 ![landing-page](https://user-images.githubusercontent.com/110144802/206880552-6e3b683d-8157-4b51-951a-a140facfcc88.gif)
 
 ### Movie detail view
-![detail-page](https://user-images.githubusercontent.com/110144802/206880624-bac6bcfa-5c70-4f8b-851c-c464349adb9c.gif)
+![detail](https://user-images.githubusercontent.com/110144802/207146182-449b771b-ceeb-4748-95b5-13061badedd5.gif)
 
 ### Live search with error handling 
 ![search](https://user-images.githubusercontent.com/110144802/206880657-7a391bce-24e1-4e85-b94f-0d07359dd5e3.gif)
