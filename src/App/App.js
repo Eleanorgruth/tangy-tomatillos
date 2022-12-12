@@ -60,7 +60,7 @@ class App extends Component {
   }
 
   render() {
-    let test = this.state.movieSearchResults.length > 0
+    let displayView = this.state.movieSearchResults.length > 0
       ? <FilteredMovieContainer movieSearchResults={this.state.movieSearchResults} error={this.state.error} />
       : <MovieContainer randomMovie={this.state.randomMovie} movieData={this.state.movieData} />
       
@@ -74,7 +74,7 @@ class App extends Component {
           <Switch>
             <Route
               exact path='/'
-              render={() => test}
+              render={() => displayView}
             />
             <Route
               exact path="/:id"
