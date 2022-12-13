@@ -5,7 +5,7 @@ import getFetch from "../apiCalls"
 import Error from "../Error/Error"
 import PropTypes from 'prop-types'
 import NavDetailedView from '../NavDetailedView/NavDetailedView'
-import ReactPlayer from 'react-player/lazy'
+import ReactPlayer from 'react-player'
 
 class MovieDetailView extends Component {
   constructor(props) {
@@ -106,6 +106,7 @@ class MovieDetailView extends Component {
             title="YouTube Video"
             width="100%"
             height="100%"
+            controls="true"
             />
           </div> 
             
