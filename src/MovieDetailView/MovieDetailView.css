@@ -4,6 +4,10 @@
   height: 100%;
   width: 100%;
   object-position: top;
+  background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: contain;
 }
 
 .detail-container {

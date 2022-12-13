@@ -5,6 +5,7 @@ import getFetch from "../apiCalls"
 import Error from "../Error/Error"
 import PropTypes from 'prop-types'
 import NavDetailedView from '../NavDetailedView/NavDetailedView'
+import ReactPlayer from 'react-player/lazy'
 
 class MovieDetailView extends Component {
   constructor(props) {
@@ -52,6 +53,7 @@ class MovieDetailView extends Component {
       genres
     } = this.state.selectedMovie
 
+    let youtubeLink = `https://www.youtube.com/embed/${this.state.randomVideo}`
     const genresData = [genres].toString().split(',').join(', ')
     const month = new Date(release_date).toLocaleString('default', { month: 'long' })
     const day = new Date(release_date).getDay()
@@ -100,15 +102,11 @@ class MovieDetailView extends Component {
             
           <div className='video-container'>
             <h2>{this.state.videoMessage}</h2> 
-            <iframe
-              src={`https://www.youtube.com/embed/${this.state.randomVideo}`}
-              title="YouTube Video"
-              frameBorder="0"
-              width="100%"
-              height="100%"
-              allowFullScreen
-            >
-            </iframe>
+            <ReactPlayer url={youtubeLink} 
+            title="YouTube Video"
+            width="100%"
+            height="100%"
+            />
           </div> 
             
         </div>
