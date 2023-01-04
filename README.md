@@ -15,6 +15,7 @@ Tangy Tomatillos was built over a two week period from design to launch by a rem
 - [Eleanor Ruth](https://github.com/Eleanorgruth)
 
 ## Technologies
+- React
 - Cypress e2e testing 
 - React Router
 - Webpack module bundler 
