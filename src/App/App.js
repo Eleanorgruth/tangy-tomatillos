@@ -23,6 +23,7 @@ class App extends Component {
     getFetch('movies')
       .then(data => {
         this.setState({ movieData: data.movies })
+
         return data.movies
       })
       .then(data => {
@@ -49,7 +50,7 @@ class App extends Component {
 
   getRandomMovie = (array) => {
     const index = Math.floor(Math.random() * array.length)
-    this.setState({ randomMovie: this.state.movieData[Number(index)] })
+    this.setState({ randomMovie: array[Number(index)] })
   }
 
   handleKeyDown = event => {
