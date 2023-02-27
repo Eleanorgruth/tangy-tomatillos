@@ -23,9 +23,11 @@ class App extends Component {
     getFetch('movies')
       .then(data => {
         this.setState({ movieData: data.movies })
-        this.getRandomMovie(data.movies)
+        return data.movies
       })
-      //.then(this.getRandomMovie())
+      .then(data => {
+        this.getRandomMovie(data)
+      })
       .catch(errorCode => {
         this.setState({ error: `Sorry! Please try again later. ${errorCode}` })
       })
