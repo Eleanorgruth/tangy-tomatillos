@@ -9,6 +9,7 @@ html {
   padding: none;
   overflow: hidden;
   height: 100%;
+  width: auto;
   margin-left: 12%;
   margin-right: 12%;
   font-family: 'Roboto', sans-serif;
