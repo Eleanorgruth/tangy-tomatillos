@@ -23,8 +23,9 @@ class App extends Component {
     getFetch('movies')
       .then(data => {
         this.setState({ movieData: data.movies })
-        this.getRandomMovie()
+        this.getRandomMovie(data.movies)
       })
+      //.then(this.getRandomMovie())
       .catch(errorCode => {
         this.setState({ error: `Sorry! Please try again later. ${errorCode}` })
       })
@@ -44,8 +45,8 @@ class App extends Component {
     }
   }
 
-  getRandomMovie = () => {
-    const index = Math.floor(Math.random() * this.state.movieData.length)
+  getRandomMovie = (array) => {
+    const index = Math.floor(Math.random() * array.length)
     this.setState({ randomMovie: this.state.movieData[Number(index)] })
   }
 
