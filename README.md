@@ -27,6 +27,7 @@ Tangy Tomatillos was built over a two week period from design to launch by a rem
 - HTML 
 - Node.JS
 - Excalidraw 
+- CircleCI
 
 ## Methodologies
 - End to end testing using Cypress
